@@ -618,6 +618,49 @@
             margin-left: 8px;
         }
 
+        /* ==================== 그룹 패널 ==================== */
+        .groups-panel {
+            width: 360px;
+            background: var(--bg-card);
+            border-right: 1px solid var(--border);
+            display: none;
+            flex-direction: column;
+        }
+
+        .groups-panel.active {
+            display: flex;
+        }
+
+        .group-list-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 8px;
+            background: transparent;
+        }
+
+        .group-list-item:hover {
+            background: var(--bg-hover);
+        }
+
+        .group-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            margin-right: 12px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            color: white;
+        }
+
         /* ==================== 채팅 영역 ==================== */
         .chat-area {
             flex: 1;
@@ -1087,6 +1130,9 @@
                 <button class="nav-item active" data-view="friends" title="친구">
                     👥
                 </button>
+                <button class="nav-item" data-view="groups" title="그룹">
+                    👥+
+                </button>
                 <button class="nav-item" data-view="messages" title="메시지">
                     💬
                     <span class="badge" id="unreadBadge" style="display: none;">0</span>
@@ -1135,7 +1181,7 @@
                     </div>
                 </div>
 
-                <!-- 친구 추가 -->
+                <!-- 친구 추가 / 그룹 생성 -->
                 <div class="tab-content" id="addFriend" style="display: none;">
                     <div class="add-friend-form">
                         <div class="error-message" id="addFriendError"></div>
@@ -1146,7 +1192,41 @@
                             <div class="input-hint">친구의 아이디를 입력하세요</div>
                         </div>
                         <button class="btn btn-primary" id="addFriendBtn">친구 요청 보내기</button>
+
+                        <hr style="border-color:var(--border);margin:16px 0;">
+
+                        <h3 style="margin-bottom:8px;">그룹 만들기</h3>
+                        <div class="error-message" id="createGroupError"></div>
+                        <div class="success-message" id="createGroupSuccess"></div>
+                        <div class="form-group">
+                            <label>그룹 이름</label>
+                            <input type="text" id="groupName" placeholder="우리 반 챗">
+                        </div>
+                        <div class="form-group">
+                            <label>멤버 아이디 (쉼표로 구분)</label>
+                            <input type="text" id="groupMembers" placeholder="friend1,friend2,friend3">
+                            <div class="input-hint">자신은 자동으로 포함됩니다</div>
+                        </div>
+                        <button class="btn btn-primary" id="createGroupBtn">그룹 생성</button>
                     </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ==================== 그룹 목록 패널 ==================== -->
+        <aside class="groups-panel" id="groupsPanel" style="display:none;">
+            <div class="panel-header">
+                <h2>그룹</h2>
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="그룹 검색..." id="groupSearch">
+                </div>
+            </div>
+            <div class="panel-content" id="groupList">
+                <div class="empty-state">
+                    <div class="empty-state-icon">👥+</div>
+                    <h3>참여한 그룹이 없습니다</h3>
+                    <p>그룹을 생성하거나 초대받아보세요</p>
                 </div>
             </div>
         </aside>
@@ -1241,7 +1321,7 @@
 
         let currentUser = null;
         let currentChatId = null;
-        let currentChatUser = null;
+        let currentChatUser = null; // For group chats: { id: groupId, data: { group: true, groupName, members: {uid:true}, ... } }
 
         // 리스너 참조(중복 등록 방지/해제용)
         let friendsRef = null;
@@ -1250,7 +1330,6 @@
         let requestsRef = null;
 
         // 금지 문자(., #, $, [, ])를 안전한 키로 변환
-        // 각 문자를 16진수 %HH 형태로 치환합니다 (Firebase path에 안전)
         function sanitizeKey(str) {
             if (!str || typeof str !== 'string') return str;
             return str.replace(/[.#$\[\]]/g, (c) => {
@@ -1267,7 +1346,8 @@
                 loadUserData();
                 loadFriends();
                 loadChats();
-                loadFriendRequests(); // 요청 로드 시작
+                loadFriendRequests();
+                loadGroups(); // 그룹 목록 로드
                 updateUserStatus(true);
             } else {
                 showLogin();
@@ -1475,6 +1555,7 @@
                 loadFriends();
                 loadChats();
                 loadFriendRequests();
+                loadGroups();
                 
             } catch (error) {
                 console.error('로그인 에러:', error);
@@ -1603,6 +1684,91 @@
             }
         });
 
+        // ==================== 그룹 생성 ====================
+        document.getElementById('createGroupBtn').addEventListener('click', async () => {
+            const name = document.getElementById('groupName').value.trim();
+            const membersInput = document.getElementById('groupMembers').value.trim().toLowerCase();
+            const err = document.getElementById('createGroupError');
+            const ok = document.getElementById('createGroupSuccess');
+            const btn = document.getElementById('createGroupBtn');
+
+            err.classList.remove('show');
+            ok.classList.remove('show');
+
+            if (!name) {
+                err.textContent = '그룹 이름을 입력하세요.';
+                err.classList.add('show');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span> 생성 중...';
+
+            try {
+                // parse members
+                const usernames = membersInput ? membersInput.split(',').map(s => s.trim()).filter(Boolean) : [];
+                // ensure current user is included
+                if (!usernames.includes(currentUser.username)) {
+                    usernames.push(currentUser.username);
+                }
+
+                // resolve usernames -> userIds
+                const members = {};
+                for (const uname of usernames) {
+                    const snap = await get(ref(database, `usernames/${uname}`));
+                    if (!snap.exists()) {
+                        err.textContent = `사용자 ${uname}을(를) 찾을 수 없습니다.`;
+                        err.classList.add('show');
+                        btn.disabled = false;
+                        btn.textContent = '그룹 생성';
+                        return;
+                    }
+                    members[snap.val()] = true;
+                }
+
+                // create group
+                const groupId = push(ref(database, 'groups')).key;
+                await set(ref(database, `groups/${groupId}`), {
+                    name: name,
+                    members: members,
+                    createdAt: Date.now(),
+                    createdBy: currentUser.uid
+                });
+
+                // create chat entries for each member
+                for (const memberId of Object.keys(members)) {
+                    await set(ref(database, `chats/${memberId}/${groupId}`), {
+                        group: true,
+                        groupName: name,
+                        members: Object.keys(members).reduce((acc, uid) => {
+                            acc[uid] = true;
+                            return acc;
+                        }, {}),
+                        lastMessage: '',
+                        lastMessageTime: Date.now(),
+                        unread: memberId === currentUser.uid ? false : true
+                    });
+                }
+
+                ok.textContent = '그룹이 생성되었습니다.';
+                ok.classList.add('show');
+                document.getElementById('groupName').value = '';
+                document.getElementById('groupMembers').value = '';
+
+                // refresh lists
+                loadGroups();
+                loadChatList();
+
+            } catch (error) {
+                console.error('그룹 생성 에러:', error);
+                err.textContent = '그룹 생성 중 오류가 발생했습니다: ' + error.message;
+                err.classList.add('show');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '그룹 생성';
+            }
+        });
+
         // ==================== 친구 목록 로드 ====================
         function loadFriends() {
             if (!currentUser) return;
@@ -1649,7 +1815,7 @@
                         `;
                         
                         friendItem.addEventListener('click', () => {
-                            openChat(friendId, friendData);
+                            openChat(friendId, friendData, false);
                         });
                         
                         friendsList.appendChild(friendItem);
@@ -1758,12 +1924,19 @@
             }
         }
 
-        // ==================== 채팅 열기 ====================
-        function openChat(friendId, friendData) {
-            currentChatUser = { id: friendId, data: friendData };
-            
-            // 채팅방 ID 생성 (작은 UID가 앞에 오도록)
-            currentChatId = [currentUser.uid, friendId].sort().join('_');
+        // ==================== 채팅 열기 (1:1 또는 그룹) ====================
+        // isGroup: true for group chat; chatId is userId for 1:1, groupId for group
+        async function openChat(chatId, metaData, isGroup) {
+            if (!currentUser) return;
+            currentChatUser = { id: chatId, data: metaData || {} };
+            currentChatUser.data.group = !!isGroup;
+
+            // 채팅방 ID 생성
+            if (isGroup) {
+                currentChatId = `group_${chatId}`;
+            } else {
+                currentChatId = [currentUser.uid, chatId].sort().join('_');
+            }
 
             // 기존 messages 리스너 제거 (중복 리스너 방지)
             if (messagesRef) {
@@ -1771,37 +1944,81 @@
                 messagesRef = null;
             }
             
-            // 메시지 탭으로 전환
+            // nav highlight to messages
             document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
             document.querySelector('[data-view="messages"]').classList.add('active');
             
             document.getElementById('friendsPanel').classList.remove('active');
+            document.getElementById('groupsPanel').classList.remove('active');
             document.getElementById('messagesPanel').classList.add('active');
             document.getElementById('chatArea').classList.add('active');
-            
+
+            // Fetch up-to-date meta for groups
+            if (isGroup) {
+                const groupSnap = await get(ref(database, `groups/${chatId}`));
+                if (groupSnap.exists()) {
+                    currentChatUser.data = Object.assign(currentChatUser.data || {}, groupSnap.val());
+                }
+            } else {
+                // ensure we have friend data
+                const userSnap = await get(ref(database, `users/${chatId}`));
+                if (userSnap.exists()) {
+                    currentChatUser.data = Object.assign(currentChatUser.data || {}, userSnap.val());
+                }
+            }
+
             // 채팅 헤더 설정
-            const initial = friendData.username ? friendData.username.charAt(0).toUpperCase() : '?';
-            const onlineStatus = friendData.online ? '온라인' : '오프라인';
-            const statusColor = friendData.online ? 'var(--success)' : 'var(--text-secondary)';
-            
-            document.getElementById('chatArea').innerHTML = `
-                <div class="chat-header">
-                    <div class="chat-header-left">
-                        <div class="chat-header-avatar">${initial}</div>
-                        <div class="chat-header-details">
-                            <h3>${friendData.name || '이름 없음'}</h3>
-                            <div class="chat-header-status" style="color: ${statusColor}">
-                                ${friendData.online ? '<span class="status-dot"></span>' : ''}
-                                ${onlineStatus}
+            let headerHTML = '';
+            if (isGroup) {
+                const groupName = currentChatUser.data.name || currentChatUser.data.groupName || '그룹';
+                const membersCount = currentChatUser.data.members ? Object.keys(currentChatUser.data.members).length : 0;
+                const initial = groupName.charAt(0).toUpperCase();
+                headerHTML = `
+                    <div class="chat-header">
+                        <div class="chat-header-left">
+                            <div class="chat-header-avatar">${initial}</div>
+                            <div class="chat-header-details">
+                                <h3>${groupName}</h3>
+                                <div class="chat-header-status" style="color: var(--text-secondary)">
+                                    ${membersCount}명 참가
+                                </div>
                             </div>
                         </div>
+                        <div class="chat-actions">
+                            <button class="action-btn" title="그룹 멤버">👥</button>
+                            <button class="action-btn" title="검색">🔍</button>
+                            <button class="action-btn" title="더보기">⋮</button>
+                        </div>
                     </div>
-                    <div class="chat-actions">
-                        <button class="action-btn" title="검색">🔍</button>
-                        <button class="action-btn" title="통화">📞</button>
-                        <button class="action-btn" title="더보기">⋮</button>
+                `;
+            } else {
+                const friendData = currentChatUser.data || {};
+                const initial = friendData.username ? friendData.username.charAt(0).toUpperCase() : '?';
+                const onlineStatus = friendData.online ? '온라인' : '오프라인';
+                const statusColor = friendData.online ? 'var(--success)' : 'var(--text-secondary)';
+                headerHTML = `
+                    <div class="chat-header">
+                        <div class="chat-header-left">
+                            <div class="chat-header-avatar">${initial}</div>
+                            <div class="chat-header-details">
+                                <h3>${friendData.name || '이름 없음'}</h3>
+                                <div class="chat-header-status" style="color: ${statusColor}">
+                                    ${friendData.online ? '<span class="status-dot"></span>' : ''}
+                                    ${onlineStatus}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <button class="action-btn" title="검색">🔍</button>
+                            <button class="action-btn" title="통화">📞</button>
+                            <button class="action-btn" title="더보기">⋮</button>
+                        </div>
                     </div>
-                </div>
+                `;
+            }
+
+            document.getElementById('chatArea').innerHTML = `
+                ${headerHTML}
                 <div class="messages-container" id="messagesContainer"></div>
                 <div class="input-area">
                     <div class="input-wrapper">
@@ -1819,7 +2036,7 @@
                     </div>
                 </div>
             `;
-            
+
             setupMessageInput();
             loadMessages();
             loadChatList();
@@ -1847,35 +2064,47 @@
             });
         }
 
-        // ==================== 메시지 전송 ====================
+        // ==================== 메시지 전송 (1:1 및 그룹 처리) ====================
         async function sendMessage() {
             const messageInput = document.getElementById('messageInput');
-            if (!messageInput || !currentChatId) return;
+            if (!messageInput || !currentChatId || !currentUser) return;
             
             const text = messageInput.value.trim();
             if (text === '') return;
             
             try {
                 const messagesRefLocal = ref(database, `messages/${currentChatId}`);
-                await push(messagesRefLocal, {
+                const pushed = await push(messagesRefLocal, {
                     text: text,
                     senderId: currentUser.uid,
                     senderUsername: currentUser.username,
                     timestamp: Date.now()
                 });
-                
-                // 최근 메시지 업데이트
-                await update(ref(database, `chats/${currentUser.uid}/${currentChatUser.id}`), {
-                    lastMessage: text,
-                    lastMessageTime: Date.now(),
-                    unread: false
-                });
-                
-                await update(ref(database, `chats/${currentChatUser.id}/${currentUser.uid}`), {
-                    lastMessage: text,
-                    lastMessageTime: Date.now(),
-                    unread: true
-                });
+
+                if (currentChatUser && currentChatUser.data && currentChatUser.data.group) {
+                    // group: update chats for all members
+                    const members = currentChatUser.data.members ? Object.keys(currentChatUser.data.members) : [];
+                    for (const memberId of members) {
+                        await update(ref(database, `chats/${memberId}/${currentChatUser.id}`), {
+                            lastMessage: text,
+                            lastMessageTime: Date.now(),
+                            unread: memberId === currentUser.uid ? false : true
+                        });
+                    }
+                } else {
+                    // 1:1 chat: update both sides
+                    await update(ref(database, `chats/${currentUser.uid}/${currentChatUser.id}`), {
+                        lastMessage: text,
+                        lastMessageTime: Date.now(),
+                        unread: false
+                    });
+                    
+                    await update(ref(database, `chats/${currentChatUser.id}/${currentUser.uid}`), {
+                        lastMessage: text,
+                        lastMessageTime: Date.now(),
+                        unread: true
+                    });
+                }
                 
                 messageInput.value = '';
                 messageInput.style.height = 'auto';
@@ -1938,13 +2167,17 @@
                         minute: '2-digit' 
                     });
                     
-                    let initial;
-                    if (isSent) {
+                    let initial = '?';
+                    if (message.senderUsername) {
+                        initial = message.senderUsername.charAt(0).toUpperCase();
+                    } else if (isSent && currentUser.username) {
                         initial = currentUser.username.charAt(0).toUpperCase();
-                    } else {
-                        initial = currentChatUser.data.username.charAt(0).toUpperCase();
+                    } else if (currentChatUser && currentChatUser.data && currentChatUser.data.group) {
+                        initial = (currentChatUser.data.name || 'G').charAt(0).toUpperCase();
+                    } else if (currentChatUser && currentChatUser.data) {
+                        initial = (currentChatUser.data.username || '?').charAt(0).toUpperCase();
                     }
-                    
+
                     const messageDiv = document.createElement('div');
                     messageDiv.className = `message ${isSent ? 'sent' : 'received'}`;
                     messageDiv.innerHTML = `
@@ -1962,7 +2195,7 @@
             });
         }
 
-        // ==================== 채팅 목록 로드 ====================
+        // ==================== 채팅 목록 로드 (1:1 + 그룹 모두 처리) ====================
         function loadChatList() {
             if (!currentUser) return;
 
@@ -1990,14 +2223,28 @@
                 }
                 
                 const chats = [];
-                for (const [friendId, chatData] of Object.entries(snapshot.val())) {
-                    const userSnapshot = await get(ref(database, `users/${friendId}`));
-                    if (userSnapshot.exists()) {
+                for (const [chatId, chatData] of Object.entries(snapshot.val())) {
+                    if (chatData.group) {
+                        // group chat: fetch group meta
+                        const groupSnap = await get(ref(database, `groups/${chatId}`));
+                        const groupData = groupSnap.exists() ? groupSnap.val() : { name: chatData.groupName || '그룹' };
                         chats.push({
-                            friendId,
-                            friendData: userSnapshot.val(),
-                            chatData
+                            friendId: chatId,
+                            friendData: { groupName: groupData.name || chatData.groupName || '그룹', members: groupData.members || chatData.members || {} },
+                            chatData,
+                            isGroup: true
                         });
+                    } else {
+                        // 1:1 chat: fetch user
+                        const userSnapshot = await get(ref(database, `users/${chatId}`));
+                        if (userSnapshot.exists()) {
+                            chats.push({
+                                friendId: chatId,
+                                friendData: userSnapshot.val(),
+                                chatData,
+                                isGroup: false
+                            });
+                        }
                     }
                 }
                 
@@ -2006,7 +2253,7 @@
                 let unreadCount = 0;
                 
                 for (const chat of chats) {
-                    const initial = chat.friendData.username.charAt(0).toUpperCase();
+                    const initial = chat.isGroup ? (chat.friendData.groupName || 'G').charAt(0).toUpperCase() : (chat.friendData.username ? chat.friendData.username.charAt(0).toUpperCase() : '?');
                     const time = chat.chatData.lastMessageTime ? new Date(chat.chatData.lastMessageTime).toLocaleTimeString('ko-KR', {
                         hour: '2-digit',
                         minute: '2-digit'
@@ -2020,7 +2267,7 @@
                         <div class="chat-avatar">${initial}</div>
                         <div class="chat-info">
                             <div class="chat-header-info">
-                                <div class="chat-name">${chat.friendData.name || '이름 없음'}</div>
+                                <div class="chat-name">${chat.isGroup ? (chat.friendData.groupName || '그룹') : (chat.friendData.name || '이름 없음')}</div>
                                 <div class="chat-time">${time}</div>
                             </div>
                             <div class="chat-preview">${chat.chatData.lastMessage || ''}</div>
@@ -2029,7 +2276,7 @@
                     `;
                     
                     chatItem.addEventListener('click', () => {
-                        openChat(chat.friendId, chat.friendData);
+                        openChat(chat.friendId, chat.friendData, !!chat.isGroup);
                         
                         // 읽음 처리
                         if (chat.chatData.unread) {
@@ -2055,6 +2302,67 @@
 
         function loadChats() {
             loadChatList();
+        }
+
+        // ==================== 그룹 목록 로드 (사용자가 속한 그룹만) ====================
+        async function loadGroups() {
+            if (!currentUser) return;
+            const groupListEl = document.getElementById('groupList');
+            groupListEl.innerHTML = '';
+
+            // 간단한 방법: chats/{userId}에서 group flag가 있는 항목을 가져옴
+            const userChatsSnap = await get(ref(database, `chats/${currentUser.uid}`));
+            if (!userChatsSnap.exists()) {
+                groupListEl.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">👥+</div>
+                        <h3>참여한 그룹이 없습니다</h3>
+                        <p>그룹을 생성하거나 초대받아보세요</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const entries = Object.entries(userChatsSnap.val()).filter(([id, data]) => data && data.group);
+            if (entries.length === 0) {
+                groupListEl.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">👥+</div>
+                        <h3>참여한 그룹이 없습니다</h3>
+                        <p>그룹을 생성하거나 초대받아보세요</p>
+                    </div>
+                `;
+                return;
+            }
+
+            for (const [groupId, chatData] of entries) {
+                // Fetch group meta
+                const groupSnap = await get(ref(database, `groups/${groupId}`));
+                const group = groupSnap.exists() ? groupSnap.val() : { name: chatData.groupName || '그룹', members: chatData.members || {} };
+                const initial = (group.name || 'G').charAt(0).toUpperCase();
+
+                const item = document.createElement('div');
+                item.className = 'group-list-item';
+                item.innerHTML = `
+                    <div class="group-avatar">${initial}</div>
+                    <div class="friend-info">
+                        <div class="friend-name">${group.name || '그룹'}</div>
+                        <div class="friend-username">${Object.keys(group.members || {}).length}명 참여</div>
+                    </div>
+                `;
+
+                item.addEventListener('click', () => {
+                    openChat(groupId, group, true);
+                    // mark read if there was unread
+                    if (chatData.unread) {
+                        update(ref(database, `chats/${currentUser.uid}/${groupId}`), {
+                            unread: false
+                        });
+                    }
+                });
+
+                groupListEl.appendChild(item);
+            }
         }
 
         // HTML 이스케이프
@@ -2091,10 +2399,18 @@
                 
                 if (view === 'friends') {
                     document.getElementById('friendsPanel').classList.add('active');
+                    document.getElementById('groupsPanel').classList.remove('active');
                     document.getElementById('messagesPanel').classList.remove('active');
                     document.getElementById('chatArea').classList.remove('active');
+                } else if (view === 'groups') {
+                    document.getElementById('friendsPanel').classList.remove('active');
+                    document.getElementById('groupsPanel').classList.add('active');
+                    document.getElementById('messagesPanel').classList.remove('active');
+                    document.getElementById('chatArea').classList.remove('active');
+                    loadGroups();
                 } else if (view === 'messages') {
                     document.getElementById('friendsPanel').classList.remove('active');
+                    document.getElementById('groupsPanel').classList.remove('active');
                     document.getElementById('messagesPanel').classList.add('active');
                     if (currentChatId) {
                         document.getElementById('chatArea').classList.add('active');
