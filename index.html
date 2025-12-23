@@ -6,13 +6,13 @@
     <title>웹 메신저</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Fredoka: wght@600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #7C3AED;
+        : root {
+            --primary:  #7C3AED;
             --primary-dark: #6D28D9;
             --primary-light: #A78BFA;
-            --secondary: #EC4899;
+            --secondary:  #EC4899;
             --bg-main: #0F0F1E;
             --bg-card: #1A1A2E;
             --bg-hover: #252541;
@@ -32,10 +32,10 @@
 
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            background: var(--bg-main);
+            background:  var(--bg-main);
             color: var(--text-primary);
             height: 100vh;
-            overflow: hidden;
+            overflow:  hidden;
         }
 
         /* 공통 버튼 스타일 */
@@ -67,8 +67,8 @@
             transform: none;
         }
 
-        .btn-secondary {
-            background: var(--bg-card);
+        . btn-secondary {
+            background:  var(--bg-card);
             color: var(--text-primary);
             border: 1px solid var(--border);
         }
@@ -80,10 +80,10 @@
         /* 로딩 스피너 */
         .spinner {
             display: inline-block;
-            width: 16px;
+            width:  16px;
             height: 16px;
             border: 2px solid rgba(255,255,255,0.3);
-            border-top-color: white;
+            border-top-color:  white;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
@@ -108,11 +108,11 @@
             display: block;
         }
 
-        .success-message {
+        . success-message {
             background: rgba(16, 185, 129, 0.1);
             border: 1px solid var(--success);
             color: var(--success);
-            padding: 12px 16px;
+            padding:  12px 16px;
             border-radius: 8px;
             font-size: 14px;
             margin-bottom: 16px;
@@ -134,18 +134,18 @@
                         radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
         }
 
-        .auth-container.active {
+        .auth-container. active {
             display: flex;
         }
 
         .auth-box {
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border:  1px solid var(--border);
             border-radius: 24px;
             padding: 48px;
             width: 100%;
             max-width: 440px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow:  0 20px 60px rgba(0, 0, 0, 0.5);
             animation: slideUp 0.5s ease;
         }
 
@@ -180,11 +180,11 @@
             font-size: 14px;
         }
 
-        .form-group {
+        . form-group {
             margin-bottom: 20px;
         }
 
-        .form-group label {
+        . form-group label {
             display: block;
             margin-bottom: 8px;
             font-size: 14px;
@@ -193,7 +193,7 @@
         }
 
         .form-group input {
-            width: 100%;
+            width:  100%;
             padding: 14px 16px;
             background: var(--bg-main);
             border: 1px solid var(--border);
@@ -214,7 +214,7 @@
             margin-top: 24px;
         }
 
-        .form-actions .btn {
+        .form-actions . btn {
             width: 100%;
             margin-bottom: 12px;
         }
@@ -249,7 +249,7 @@
             height: 100vh;
         }
 
-        .main-app.active {
+        .main-app. active {
             display: flex;
         }
 
@@ -268,7 +268,7 @@
             width: 48px;
             height: 48px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 16px;
+            border-radius:  16px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -284,7 +284,7 @@
 
         .nav-items {
             flex: 1;
-            display: flex;
+            display:  flex;
             flex-direction: column;
             gap: 16px;
         }
@@ -301,7 +301,7 @@
             font-size: 24px;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
+            position:  relative;
             color: var(--text-secondary);
         }
 
@@ -316,7 +316,7 @@
             box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
         }
 
-        .nav-item .badge {
+        .nav-item . badge {
             position: absolute;
             top: 8px;
             right: 8px;
@@ -350,7 +350,7 @@
             margin-top: 12px;
         }
 
-        .nav-user:hover {
+        . nav-user:hover {
             transform: scale(1.05);
         }
 
@@ -381,19 +381,32 @@
             flex-direction: column;
         }
 
-        .friends-panel.active {
+        .friends-panel. active {
             display: flex;
         }
 
         .panel-header {
             padding: 24px 20px;
-            border-bottom: 1px solid var(--border);
+            border-bottom:  1px solid var(--border);
         }
 
         .panel-header h2 {
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 16px;
+        }
+
+        .panel-header-actions {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .panel-header-actions button {
+            flex: 1;
+            padding:  8px 12px;
+            font-size: 12px;
+            font-weight: 600;
         }
 
         .search-box {
@@ -407,7 +420,7 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             color: var(--text-primary);
-            font-size: 14px;
+            font-size:  14px;
             transition: all 0.3s ease;
         }
 
@@ -417,7 +430,7 @@
             box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
         }
 
-        .search-icon {
+        . search-icon {
             position: absolute;
             left: 16px;
             top: 50%;
@@ -442,10 +455,12 @@
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition:  all 0.3s ease;
+            white-space: nowrap;
+            font-size: 13px;
         }
 
-        .tab-btn.active {
+        . tab-btn.active {
             background: var(--primary);
             color: white;
         }
@@ -456,7 +471,7 @@
             padding: 12px;
         }
 
-        .friend-item {
+        . friend-item {
             display: flex;
             align-items: center;
             padding: 12px;
@@ -487,7 +502,7 @@
             position: relative;
         }
 
-        .friend-avatar.online::after {
+        .friend-avatar. online:: after {
             content: '';
             position: absolute;
             bottom: 2px;
@@ -495,7 +510,7 @@
             width: 12px;
             height: 12px;
             background: var(--success);
-            border: 2px solid var(--bg-card);
+            border:  2px solid var(--bg-card);
             border-radius: 50%;
         }
 
@@ -516,7 +531,7 @@
             margin-bottom: 2px;
         }
 
-        .friend-status {
+        . friend-status {
             font-size: 13px;
             color: var(--text-secondary);
             white-space: nowrap;
@@ -543,7 +558,7 @@
             display: flex;
         }
 
-        .chat-item {
+        . chat-item {
             display: flex;
             align-items: center;
             padding: 14px 12px;
@@ -566,7 +581,7 @@
         .chat-avatar {
             width: 48px;
             height: 48px;
-            border-radius: 50%;
+            border-radius:  50%;
             margin-right: 12px;
             flex-shrink: 0;
             display: flex;
@@ -576,6 +591,10 @@
             font-size: 18px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
+        }
+
+        .chat-avatar. group {
+            font-size: 20px;
         }
 
         .chat-info {
@@ -590,9 +609,9 @@
             margin-bottom: 4px;
         }
 
-        .chat-name {
+        . chat-name {
             font-weight: 600;
-            font-size: 15px;
+            font-size:  15px;
         }
 
         .chat-time {
@@ -614,51 +633,8 @@
             font-size: 11px;
             font-weight: 700;
             padding: 2px 8px;
-            border-radius: 10px;
-            margin-left: 8px;
-        }
-
-        /* ==================== 그룹 패널 ==================== */
-        .groups-panel {
-            width: 360px;
-            background: var(--bg-card);
-            border-right: 1px solid var(--border);
-            display: none;
-            flex-direction: column;
-        }
-
-        .groups-panel.active {
-            display: flex;
-        }
-
-        .group-list-item {
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 8px;
-            background: transparent;
-        }
-
-        .group-list-item:hover {
-            background: var(--bg-hover);
-        }
-
-        .group-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            margin-right: 12px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 18px;
-            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
-            color: white;
+            border-radius:  10px;
+            margin-left:  8px;
         }
 
         /* ==================== 채팅 영역 ==================== */
@@ -669,13 +645,13 @@
             background: var(--bg-main);
         }
 
-        .chat-area.active {
+        .chat-area. active {
             display: flex;
         }
 
         .chat-header {
             padding: 20px 24px;
-            border-bottom: 1px solid var(--border);
+            border-bottom:  1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -690,7 +666,7 @@
         .chat-header-avatar {
             width: 42px;
             height: 42px;
-            border-radius: 50%;
+            border-radius:  50%;
             margin-right: 12px;
             display: flex;
             align-items: center;
@@ -701,7 +677,11 @@
             color: white;
         }
 
-        .chat-header-details h3 {
+        .chat-header-avatar.group {
+            font-size: 18px;
+        }
+
+        . chat-header-details h3 {
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 4px;
@@ -736,7 +716,7 @@
         .action-btn {
             width: 36px;
             height: 36px;
-            border: none;
+            border:  none;
             background: var(--bg-main);
             color: var(--text-secondary);
             border-radius: 8px;
@@ -764,7 +744,7 @@
 
         .date-divider {
             text-align: center;
-            margin: 16px 0;
+            margin:  16px 0;
             position: relative;
         }
 
@@ -772,9 +752,9 @@
             content: '';
             position: absolute;
             left: 0;
-            right: 0;
+            right:  0;
             top: 50%;
-            height: 1px;
+            height:  1px;
             background: var(--border);
         }
 
@@ -796,7 +776,7 @@
         @keyframes messageSlide {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform:  translateY(10px);
             }
             to {
                 opacity: 1;
@@ -804,14 +784,14 @@
             }
         }
 
-        .message.sent {
+        .message. sent {
             flex-direction: row-reverse;
         }
 
         .message-avatar {
             width: 36px;
             height: 36px;
-            border-radius: 50%;
+            border-radius:  50%;
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -822,7 +802,7 @@
             color: white;
         }
 
-        .message.sent .message-avatar {
+        .message. sent .message-avatar {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
         }
 
@@ -833,7 +813,7 @@
             gap: 4px;
         }
 
-        .message-bubble {
+        . message-bubble {
             background: var(--bg-card);
             padding: 12px 16px;
             border-radius: 16px;
@@ -842,14 +822,20 @@
             word-wrap: break-word;
         }
 
-        .message.sent .message-bubble {
+        .message. sent .message-bubble {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
             border-radius: 16px 16px 4px 16px;
         }
 
-        .message.received .message-bubble {
+        . message. received .message-bubble {
             border-radius: 16px 16px 16px 4px;
+        }
+
+        .message-sender {
+            font-size: 12px;
+            color: var(--text-secondary);
+            padding: 0 4px;
         }
 
         .message-time {
@@ -858,7 +844,7 @@
             padding: 0 4px;
         }
 
-        .message.sent .message-time {
+        .message. sent .message-time {
             text-align: right;
         }
 
@@ -877,16 +863,17 @@
         .input-actions {
             display: flex;
             gap: 8px;
+            align-items: center;
         }
 
         .attachment-btn {
             width: 40px;
             height: 40px;
-            border: none;
+            border:  none;
             background: var(--bg-main);
             color: var(--text-secondary);
             border-radius: 50%;
-            cursor: pointer;
+            cursor:  pointer;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -941,12 +928,45 @@
             box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
         }
 
-        /* 빈 상태 화면 */
-        .empty-state {
-            flex: 1;
+        /* emoji panel:  vertical column (5 items) */
+        .emoji-panel {
+            position: absolute;
+            bottom: 140px;
+            right: 140px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 6px;
+            border-radius: 10px;
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            width: 48px;
+            z-index: 999;
+        }
+        
+        .emoji-item {
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        /* uploaded image style in bubble */
+        .message-image { max-width: 320px; border-radius: 8px; display: block; }
+
+        /* 읽음 텍스트 */
+        .read-indicator { font-size: 11px; color:var(--text-secondary); margin-top:6px; text-align:right; }
+
+        /* 빈 상태 화면 */
+        .empty-state {
+            flex: 1;
+            display:  flex;
+            align-items:  center;
+            justify-content:  center;
             flex-direction: column;
             color: var(--text-secondary);
         }
@@ -957,18 +977,18 @@
             opacity: 0.5;
         }
 
-        .empty-state h3 {
+        . empty-state h3 {
             font-size: 20px;
-            margin-bottom: 8px;
+            margin-bottom:  8px;
             color: var(--text-primary);
         }
 
         /* 스크롤바 */
-        ::-webkit-scrollbar {
+        : :-webkit-scrollbar {
             width: 6px;
         }
 
-        ::-webkit-scrollbar-track {
+        : :-webkit-scrollbar-track {
             background: transparent;
         }
 
@@ -995,7 +1015,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            font-size: 20px;
+            font-size:  20px;
         }
 
         .logout-btn:hover {
@@ -1012,6 +1032,7 @@
             align-items: center;
             justify-content: center;
             z-index: 999;
+            overflow-y: auto;
         }
 
         .modal-backdrop.active {
@@ -1021,9 +1042,10 @@
         .modal {
             width: 440px;
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border:  1px solid var(--border);
             border-radius: 16px;
             padding: 20px;
+            margin:  20px;
         }
 
         .modal h3 {
@@ -1031,8 +1053,84 @@
             font-size: 18px;
         }
 
-        .modal .form-group {
+        . modal h4 {
+            margin-top: 16px;
             margin-bottom: 12px;
+            font-size:  15px;
+        }
+
+        . modal . form-group {
+            margin-bottom: 12px;
+        }
+
+        . modal textarea {
+            width: 100%;
+            padding: 10px;
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: 'Noto Sans KR', sans-serif;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .member-list {
+            max-height: 200px;
+            overflow-y:  auto;
+            background: var(--bg-main);
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 12px;
+        }
+
+        .member-item {
+            padding: 8px;
+            margin-bottom: 4px;
+            background: var(--bg-card);
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .member-item . remove-member {
+            background: var(--error);
+            color: white;
+            border:  none;
+            border-radius:  4px;
+            padding: 2px 8px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        . group-info-section {
+            background: var(--bg-main);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .group-info-section strong {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .group-members-quick {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .member-badge {
+            background: var(--primary);
+            color: white;
+            padding:  2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -1066,7 +1164,7 @@
             </form>
             
             <div class="auth-switch">
-                계정이 없으신가요? <a id="showSignup">회원가입</a>
+                계정이 없으신가요?  <a id="showSignup">회원가입</a>
             </div>
         </div>
     </div>
@@ -1130,12 +1228,9 @@
                 <button class="nav-item active" data-view="friends" title="친구">
                     👥
                 </button>
-                <button class="nav-item" data-view="groups" title="그룹">
-                    👥+
-                </button>
                 <button class="nav-item" data-view="messages" title="메시지">
                     💬
-                    <span class="badge" id="unreadBadge" style="display: none;">0</span>
+                    <span class="badge" id="unreadBadge" style="display:  none;">0</span>
                 </button>
             </div>
             
@@ -1148,6 +1243,9 @@
         <aside class="friends-panel active" id="friendsPanel">
             <div class="panel-header">
                 <h2>친구</h2>
+                <div class="panel-header-actions">
+                    <button class="btn btn-secondary" id="createGroupBtn" style="flex: 1; padding: 8px 12px; font-size: 13px;">그룹 생성</button>
+                </div>
                 <div class="search-box">
                     <span class="search-icon">🔍</span>
                     <input type="text" placeholder="친구 검색..." id="friendSearch">
@@ -1181,8 +1279,8 @@
                     </div>
                 </div>
 
-                <!-- 친구 추가 / 그룹 생성 -->
-                <div class="tab-content" id="addFriend" style="display: none;">
+                <!-- 친구 추가 -->
+                <div class="tab-content" id="addFriend" style="display:  none;">
                     <div class="add-friend-form">
                         <div class="error-message" id="addFriendError"></div>
                         <div class="success-message" id="addFriendSuccess"></div>
@@ -1192,41 +1290,7 @@
                             <div class="input-hint">친구의 아이디를 입력하세요</div>
                         </div>
                         <button class="btn btn-primary" id="addFriendBtn">친구 요청 보내기</button>
-
-                        <hr style="border-color:var(--border);margin:16px 0;">
-
-                        <h3 style="margin-bottom:8px;">그룹 만들기</h3>
-                        <div class="error-message" id="createGroupError"></div>
-                        <div class="success-message" id="createGroupSuccess"></div>
-                        <div class="form-group">
-                            <label>그룹 이름</label>
-                            <input type="text" id="groupName" placeholder="우리 반 챗">
-                        </div>
-                        <div class="form-group">
-                            <label>멤버 아이디 (쉼표로 구분)</label>
-                            <input type="text" id="groupMembers" placeholder="friend1,friend2,friend3">
-                            <div class="input-hint">자신은 자동으로 포함됩니다</div>
-                        </div>
-                        <button class="btn btn-primary" id="createGroupBtn">그룹 생성</button>
                     </div>
-                </div>
-            </div>
-        </aside>
-
-        <!-- ==================== 그룹 목록 패널 ==================== -->
-        <aside class="groups-panel" id="groupsPanel" style="display:none;">
-            <div class="panel-header">
-                <h2>그룹</h2>
-                <div class="search-box">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" placeholder="그룹 검색..." id="groupSearch">
-                </div>
-            </div>
-            <div class="panel-content" id="groupList">
-                <div class="empty-state">
-                    <div class="empty-state-icon">👥+</div>
-                    <h3>참여한 그룹이 없습니다</h3>
-                    <p>그룹을 생성하거나 초대받아보세요</p>
                 </div>
             </div>
         </aside>
@@ -1237,7 +1301,7 @@
                 <h2>메시지</h2>
                 <div class="search-box">
                     <span class="search-icon">🔍</span>
-                    <input type="text" placeholder="대화 검색...">
+                    <input type="text" placeholder="대화 검색... ">
                 </div>
             </div>
 
@@ -1275,9 +1339,9 @@
                 <input type="text" id="settingsStatus" placeholder="상태 메시지">
             </div>
 
-            <hr style="border-color:var(--border);margin:12px 0;">
+            <hr style="border-color: var(--border);margin: 12px 0;">
 
-            <h4 style="margin-bottom:8px;">비밀번호 변경</h4>
+            <h4>비밀번호 변경</h4>
             <div class="form-group">
                 <label>현재 비밀번호</label>
                 <input type="password" id="currentPassword" placeholder="현재 비밀번호">
@@ -1298,46 +1362,134 @@
         </div>
     </div>
 
+    <!-- 그룹 생성 모달 -->
+    <div class="modal-backdrop" id="createGroupModal">
+        <div class="modal">
+            <h3>그룹 채팅 생성</h3>
+            <div class="error-message" id="groupError"></div>
+            <div class="success-message" id="groupSuccess"></div>
+            
+            <div class="form-group">
+                <label>그룹 이름</label>
+                <input type="text" id="groupName" placeholder="그룹 이름을 입력하세요">
+            </div>
+
+            <div class="form-group">
+                <label>그룹 설명</label>
+                <textarea id="groupDescription" placeholder="그룹 설명 (선택사항)"></textarea>
+            </div>
+
+            <h4>멤버 추가</h4>
+            <div class="form-group">
+                <label>친구 선택</label>
+                <div class="member-list" id="friendSelectList">
+                    <!-- 친구 목록이 동적으로 추가됨 -->
+                </div>
+            </div>
+
+            <h4>선택된 멤버</h4>
+            <div class="member-list" id="selectedMembersList">
+                <!-- 선택된 멤버 표시 -->
+            </div>
+
+            <div style="display:flex;gap:8px;justify-content:flex-end;">
+                <button class="btn btn-secondary" id="closeGroupModal">취소</button>
+                <button class="btn btn-primary" id="createGroupBtn2">그룹 생성</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 그룹 정보 모달 -->
+    <div class="modal-backdrop" id="groupInfoModal">
+        <div class="modal">
+            <h3>그룹 정보</h3>
+            <div class="error-message" id="groupInfoError"></div>
+            <div class="success-message" id="groupInfoSuccess"></div>
+            
+            <div class="group-info-section">
+                <strong>그룹 이름</strong>
+                <span id="groupInfoName"></span>
+            </div>
+
+            <div class="group-info-section">
+                <strong>그룹 설명</strong>
+                <span id="groupInfoDesc"></span>
+            </div>
+
+            <h4>멤버 관리</h4>
+            <div class="member-list" id="groupMembersList">
+                <!-- 멤버 목록 -->
+            </div>
+
+            <h4>멤버 추가</h4>
+            <div class="form-group">
+                <label>친구 선택</label>
+                <div class="member-list" id="groupAddFriendList">
+                    <!-- 친구 목록 -->
+                </div>
+            </div>
+
+            <div style="display:flex;gap: 8px;justify-content:flex-end;margin-top:12px;">
+                <button class="btn btn-secondary" id="closeGroupInfoModal">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden file input for attachments -->
+    <input type="file" id="fileInput" accept="image/*" style="display: none">
+
+    <!-- Emoji panel (created in JS) -->
+    <div id="emojiPanel" class="emoji-panel" aria-hidden="true"></div>
+
     <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getDatabase, ref, set, push, onValue, get, update, query, orderByChild, equalTo, child, off } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import {
+            getDatabase, ref, set, push, onValue, get, update, off
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import {
+            getStorage, ref as storageRef, uploadBytes, getDownloadURL
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
-        // Firebase 설정 (기존 설정 유지)
+        // Firebase 설정
         const firebaseConfig = {
             apiKey: "AIzaSyDyAtNIrWfsROkqi8op6zynWZfjBwEMeh8",
             authDomain: "mess-db5a2.firebaseapp.com",
             databaseURL: "https://mess-db5a2-default-rtdb.firebaseio.com",
             projectId: "mess-db5a2",
-            storageBucket: "mess-db5a2.firebasestorage.app",
+            storageBucket: "mess-db5a2.appspot.com",
             messagingSenderId: "125385749508",
             appId: "1:125385749508:web:f3e80ebb8cfd9e397af151",
             measurementId: "G-W6LN7XGMZB"
         };
 
-        // Firebase 초기화
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
+        const storage = getStorage(app);
 
         let currentUser = null;
         let currentChatId = null;
-        let currentChatUser = null; // For group chats: { id: groupId, data: { group: true, groupName, members: {uid:true}, ... } }
+        let currentChatUser = null;
+        let currentChatType = null; // 'direct' or 'group'
+        let currentGroupId = null;
 
         // 리스너 참조(중복 등록 방지/해제용)
         let friendsRef = null;
         let chatsRef = null;
         let messagesRef = null;
         let requestsRef = null;
+        let groupsRef = null;
+        let groupChatRef = null;
 
-        // 금지 문자(., #, $, [, ])를 안전한 키로 변환
+        // 금지 문자 변환
         function sanitizeKey(str) {
-            if (!str || typeof str !== 'string') return str;
-            return str.replace(/[.#$\[\]]/g, (c) => {
+            if (! str || typeof str !== 'string') return str;
+            return str.replace(/[. #$\[\]]/g, (c) => {
                 return '%' + c.charCodeAt(0).toString(16);
             });
         }
 
-        // ==================== 로컬 스토리지에서 사용자 정보 확인 ====================
+        // ==================== 로그인 상태 확인 ====================
         function checkLoginStatus() {
             const savedUser = localStorage.getItem('chatAppUser');
             if (savedUser) {
@@ -1347,7 +1499,7 @@
                 loadFriends();
                 loadChats();
                 loadFriendRequests();
-                loadGroups(); // 그룹 목록 로드
+                loadGroups();
                 updateUserStatus(true);
             } else {
                 showLogin();
@@ -1355,7 +1507,7 @@
         }
 
         function showLogin() {
-            document.getElementById('loginContainer').classList.add('active');
+            document. getElementById('loginContainer').classList.add('active');
             document.getElementById('signupContainer').classList.remove('active');
             document.getElementById('mainApp').classList.remove('active');
         }
@@ -1380,12 +1532,11 @@
             const signupBtn = document.getElementById('signupBtn');
             
             errorDiv.classList.remove('show');
-            successDiv.classList.remove('show');
+            successDiv.classList. remove('show');
             
-            // 유효성 검사
             if (!/^[a-zA-Z0-9]+$/.test(username)) {
-                errorDiv.textContent = '아이디는 영문과 숫자만 사용 가능합니다.';
-                errorDiv.classList.add('show');
+                errorDiv.textContent = '아이디는 영문과 숫자만 사용 가능합니다. ';
+                errorDiv.classList. add('show');
                 return;
             }
             
@@ -1395,11 +1546,10 @@
                 return;
             }
 
-            // 이메일 기본 체크
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
-                errorDiv.textContent = '유효한 이메일을 입력하세요.';
-                errorDiv.classList.add('show');
+            if (!emailPattern. test(email)) {
+                errorDiv.textContent = '유효한 이메일을 입력하세요. ';
+                errorDiv.classList. add('show');
                 return;
             }
             
@@ -1419,7 +1569,6 @@
             signupBtn.innerHTML = '<span class="spinner"></span> 가입 중...';
             
             try {
-                // 아이디 중복 확인
                 const userSnapshot = await get(ref(database, `usernames/${username}`));
                 if (userSnapshot.exists()) {
                     errorDiv.textContent = '이미 사용 중인 아이디입니다.';
@@ -1427,45 +1576,35 @@
                     return;
                 }
 
-                // 이메일 중복 확인 (sanitizeKey 사용)
                 const emailKey = sanitizeKey(email);
                 const emailSnapshot = await get(ref(database, `emails/${emailKey}`));
                 if (emailSnapshot.exists()) {
-                    errorDiv.textContent = '이미 사용 중인 이메일입니다.';
+                    errorDiv. textContent = '이미 사용 중인 이메일입니다.';
                     errorDiv.classList.add('show');
                     return;
                 }
                 
-                // 고유 ID 생성
                 const userId = push(ref(database, 'users')).key;
-                
-                // 비밀번호 해시 (간단한 예시, 실제로는 더 강력한 암호화 필요)
                 const hashedPassword = btoa(password);
                 
-                // 사용자 정보 저장
                 await set(ref(database, `users/${userId}`), {
                     username: username,
                     email: email,
-                    name: name,
+                    name:  name,
                     password: hashedPassword,
-                    status: '안녕하세요!',
-                    createdAt: Date.now(),
+                    status: '안녕하세요! ',
+                    createdAt:  Date.now(),
                     online: false
                 });
                 
-                // 아이디-유저ID 매핑 저장
                 await set(ref(database, `usernames/${username}`), userId);
-
-                // 이메일-유저ID 매핑 저장 (sanitizeKey 사용)
                 await set(ref(database, `emails/${emailKey}`), userId);
                 
-                successDiv.textContent = '회원가입이 완료되었습니다! 로그인해주세요.';
+                successDiv. textContent = '회원가입이 완료되었습니다!  로그인해주세요.';
                 successDiv.classList.add('show');
                 
-                // 폼 초기화
                 document.getElementById('signupForm').reset();
                 
-                // 2초 후 로그인 화면으로
                 setTimeout(() => {
                     document.getElementById('signupContainer').classList.remove('active');
                     document.getElementById('loginContainer').classList.add('active');
@@ -1473,17 +1612,17 @@
                 
             } catch (error) {
                 console.error('회원가입 에러:', error);
-                errorDiv.textContent = '회원가입 중 오류가 발생했습니다: ' + error.message;
+                errorDiv.textContent = '회원가입 중 오류가 발생했습니다:  ' + error.message;
                 errorDiv.classList.add('show');
             } finally {
-                signupBtn.disabled = false;
+                signupBtn. disabled = false;
                 signupBtn.textContent = '회원가입';
             }
         });
 
         // ==================== 로그인 ====================
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+            e. preventDefault();
             
             const identifier = document.getElementById('loginUsername').value.trim().toLowerCase();
             const password = document.getElementById('loginPassword').value;
@@ -1495,14 +1634,12 @@
             loginBtn.innerHTML = '<span class="spinner"></span> 로그인 중...';
             
             try {
-                // identifier를 username 또는 email로 판단하지 말고, 매핑에서 먼저 찾아본다
                 let userId = null;
 
                 const usernameSnapshot = await get(ref(database, `usernames/${identifier}`));
                 if (usernameSnapshot.exists()) {
-                    userId = usernameSnapshot.val();
+                    userId = usernameSnapshot. val();
                 } else {
-                    // 이메일 매핑 조회 시 sanitizeKey 사용
                     const emailKey = sanitizeKey(identifier);
                     const emailSnapshot = await get(ref(database, `emails/${emailKey}`));
                     if (emailSnapshot.exists()) {
@@ -1516,10 +1653,9 @@
                     return;
                 }
                 
-                // 사용자 정보 가져오기
                 const userSnapshot = await get(ref(database, `users/${userId}`));
                 
-                if (!userSnapshot.exists()) {
+                if (! userSnapshot.exists()) {
                     errorDiv.textContent = '사용자 정보를 찾을 수 없습니다.';
                     errorDiv.classList.add('show');
                     return;
@@ -1530,26 +1666,22 @@
                 
                 if (userData.password !== hashedPassword) {
                     errorDiv.textContent = '비밀번호가 올바르지 않습니다.';
-                    errorDiv.classList.add('show');
+                    errorDiv. classList.add('show');
                     return;
                 }
                 
-                // 로그인 성공
                 currentUser = {
                     uid: userId,
-                    username: userData.username,
+                    username:  userData.username,
                     name: userData.name,
                     email: userData.email || '',
                     status: userData.status
                 };
                 
-                // 로컬 스토리지에 저장
                 localStorage.setItem('chatAppUser', JSON.stringify(currentUser));
                 
-                // 온라인 상태로 업데이트
                 await updateUserStatus(true);
                 
-                // 메인 앱 표시
                 showMainApp();
                 loadUserData();
                 loadFriends();
@@ -1569,10 +1701,9 @@
 
         // ==================== 로그아웃 ====================
         document.getElementById('logoutBtn').addEventListener('click', async () => {
-            if (confirm('로그아웃 하시겠습니까?')) {
+            if (confirm('로그아웃 하시겠습니까? ')) {
                 try {
                     await updateUserStatus(false);
-                    // 리스너 정리
                     cleanupAllListeners();
 
                     localStorage.removeItem('chatAppUser');
@@ -1587,10 +1718,9 @@
 
         // ==================== 사용자 데이터 로드 ====================
         function loadUserData() {
-            if (!currentUser) return;
+            if (! currentUser) return;
             const profileEl = document.getElementById('userProfile');
-            // 표시할 텍스트 (username 첫글자 또는 이름 이니셜)
-            const label = currentUser.username ? currentUser.username.charAt(0).toUpperCase() : (currentUser.name ? currentUser.name.charAt(0).toUpperCase() : 'U');
+            const label = currentUser.username ?  currentUser.username. charAt(0).toUpperCase() : (currentUser.name ?  currentUser.name.charAt(0).toUpperCase() : 'U');
             profileEl.textContent = label;
         }
 
@@ -1634,10 +1764,9 @@
             addBtn.innerHTML = '<span class="spinner"></span> 요청 중...';
             
             try {
-                // 아이디로 사용자 검색
                 const usernameSnapshot = await get(ref(database, `usernames/${username}`));
                 
-                if (!usernameSnapshot.exists()) {
+                                if (! usernameSnapshot.exists()) {
                     errorDiv.textContent = '해당 아이디의 사용자를 찾을 수 없습니다.';
                     errorDiv.classList.add('show');
                     return;
@@ -1645,15 +1774,13 @@
                 
                 const friendId = usernameSnapshot.val();
 
-                // 이미 친구인지 확인
                 const friendCheck = await get(ref(database, `friends/${currentUser.uid}/${friendId}`));
                 if (friendCheck.exists()) {
                     errorDiv.textContent = '이미 친구로 등록되어 있습니다.';
-                    errorDiv.classList.add('show');
+                    errorDiv. classList.add('show');
                     return;
                 }
 
-                // 이미 요청을 보냈는지 확인 (recipient side)
                 const existingRequest = await get(ref(database, `friendRequests/${friendId}/${currentUser.uid}`));
                 if (existingRequest.exists()) {
                     errorDiv.textContent = '이미 친구 요청을 보냈습니다.';
@@ -1661,7 +1788,6 @@
                     return;
                 }
 
-                // 요청 생성 (recipientId -> senderId)
                 await set(ref(database, `friendRequests/${friendId}/${currentUser.uid}`), {
                     from: currentUser.uid,
                     username: currentUser.username,
@@ -1676,7 +1802,7 @@
 
             } catch (error) {
                 console.error('친구 요청 에러:', error);
-                errorDiv.textContent = '친구 요청 중 오류가 발생했습니다: ' + error.message;
+                errorDiv.textContent = '친구 요청 중 오류가 발생했습니다:  ' + error.message;
                 errorDiv.classList.add('show');
             } finally {
                 addBtn.disabled = false;
@@ -1684,98 +1810,12 @@
             }
         });
 
-        // ==================== 그룹 생성 ====================
-        document.getElementById('createGroupBtn').addEventListener('click', async () => {
-            const name = document.getElementById('groupName').value.trim();
-            const membersInput = document.getElementById('groupMembers').value.trim().toLowerCase();
-            const err = document.getElementById('createGroupError');
-            const ok = document.getElementById('createGroupSuccess');
-            const btn = document.getElementById('createGroupBtn');
-
-            err.classList.remove('show');
-            ok.classList.remove('show');
-
-            if (!name) {
-                err.textContent = '그룹 이름을 입력하세요.';
-                err.classList.add('show');
-                return;
-            }
-
-            btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span> 생성 중...';
-
-            try {
-                // parse members
-                const usernames = membersInput ? membersInput.split(',').map(s => s.trim()).filter(Boolean) : [];
-                // ensure current user is included
-                if (!usernames.includes(currentUser.username)) {
-                    usernames.push(currentUser.username);
-                }
-
-                // resolve usernames -> userIds
-                const members = {};
-                for (const uname of usernames) {
-                    const snap = await get(ref(database, `usernames/${uname}`));
-                    if (!snap.exists()) {
-                        err.textContent = `사용자 ${uname}을(를) 찾을 수 없습니다.`;
-                        err.classList.add('show');
-                        btn.disabled = false;
-                        btn.textContent = '그룹 생성';
-                        return;
-                    }
-                    members[snap.val()] = true;
-                }
-
-                // create group
-                const groupId = push(ref(database, 'groups')).key;
-                await set(ref(database, `groups/${groupId}`), {
-                    name: name,
-                    members: members,
-                    createdAt: Date.now(),
-                    createdBy: currentUser.uid
-                });
-
-                // create chat entries for each member
-                for (const memberId of Object.keys(members)) {
-                    await set(ref(database, `chats/${memberId}/${groupId}`), {
-                        group: true,
-                        groupName: name,
-                        members: Object.keys(members).reduce((acc, uid) => {
-                            acc[uid] = true;
-                            return acc;
-                        }, {}),
-                        lastMessage: '',
-                        lastMessageTime: Date.now(),
-                        unread: memberId === currentUser.uid ? false : true
-                    });
-                }
-
-                ok.textContent = '그룹이 생성되었습니다.';
-                ok.classList.add('show');
-                document.getElementById('groupName').value = '';
-                document.getElementById('groupMembers').value = '';
-
-                // refresh lists
-                loadGroups();
-                loadChatList();
-
-            } catch (error) {
-                console.error('그룹 생성 에러:', error);
-                err.textContent = '그룹 생성 중 오류가 발생했습니다: ' + error.message;
-                err.classList.add('show');
-            } finally {
-                btn.disabled = false;
-                btn.textContent = '그룹 생성';
-            }
-        });
-
         // ==================== 친구 목록 로드 ====================
         function loadFriends() {
             if (!currentUser) return;
 
-            // 기존 리스너 해제 (중복 등록 방지)
             if (friendsRef) {
-                try { off(friendsRef); } catch (e) { /* ignore */ }
+                try { off(friendsRef); } catch (e) { }
             }
 
             friendsRef = ref(database, `friends/${currentUser.uid}`);
@@ -1783,7 +1823,7 @@
                 const friendsList = document.getElementById('friendsList');
                 friendsList.innerHTML = '';
                 
-                if (!snapshot.exists()) {
+                if (! snapshot.exists()) {
                     friendsList.innerHTML = `
                         <div class="empty-state">
                             <div class="empty-state-icon">👥</div>
@@ -1800,7 +1840,7 @@
                     const userSnapshot = await get(ref(database, `users/${friendId}`));
                     if (userSnapshot.exists()) {
                         const friendData = userSnapshot.val();
-                        const initial = friendData.username ? friendData.username.charAt(0).toUpperCase() : '?';
+                        const initial = friendData.username ?  friendData.username.charAt(0).toUpperCase() : '? ';
                         const onlineClass = friendData.online ? 'online' : '';
                         
                         const friendItem = document.createElement('div');
@@ -1815,7 +1855,7 @@
                         `;
                         
                         friendItem.addEventListener('click', () => {
-                            openChat(friendId, friendData, false);
+                            openChat(friendId, friendData);
                         });
                         
                         friendsList.appendChild(friendItem);
@@ -1828,9 +1868,8 @@
         function loadFriendRequests() {
             if (!currentUser) return;
 
-            // 기존 requests 리스너 해제
             if (requestsRef) {
-                try { off(requestsRef); } catch (e) { /* ignore */ }
+                try { off(requestsRef); } catch (e) { }
             }
 
             requestsRef = ref(database, `friendRequests/${currentUser.uid}`);
@@ -1856,13 +1895,12 @@
                 requestCountEl.textContent = `(${entries.length})`;
 
                 for (const [senderId, reqData] of entries) {
-                    // 요청 보낸 사용자의 최신 프로필 가져오기
                     const userSnap = await get(ref(database, `users/${senderId}`));
                     const sender = userSnap.exists() ? userSnap.val() : {
                         username: reqData.username || 'unknown',
                         name: reqData.name || '이름 없음'
                     };
-                    const initial = sender.username ? sender.username.charAt(0).toUpperCase() : '?';
+                    const initial = sender.username ?  sender.username.charAt(0).toUpperCase() : '?';
 
                     const item = document.createElement('div');
                     item.className = 'friend-item';
@@ -1879,7 +1917,6 @@
                         </div>
                     `;
 
-                    // 이벤트 바인딩
                     item.querySelector('.btn-accept').addEventListener('click', async () => {
                         await acceptFriendRequest(senderId);
                     });
@@ -1892,19 +1929,15 @@
             });
         }
 
-        // 수락
         async function acceptFriendRequest(senderId) {
             if (!currentUser) return;
             try {
-                // 양방향 친구 추가
                 await set(ref(database, `friends/${currentUser.uid}/${senderId}`), { addedAt: Date.now() });
-                await set(ref(database, `friends/${senderId}/${currentUser.uid}`), { addedAt: Date.now() });
+                await set(ref(database, `friends/${senderId}/${currentUser. uid}`), { addedAt: Date.now() });
 
-                // 요청 삭제
                 await set(ref(database, `friendRequests/${currentUser.uid}/${senderId}`), null);
 
                 alert('친구 요청을 수락했습니다.');
-                // 친구 목록 새로고침(리스너가 자동 갱신)
                 loadFriends();
             } catch (err) {
                 console.error('수락 에러:', err);
@@ -1912,7 +1945,6 @@
             }
         }
 
-        // 거절
         async function rejectFriendRequest(senderId) {
             if (!currentUser) return;
             try {
@@ -1924,107 +1956,221 @@
             }
         }
 
-        // ==================== 채팅 열기 (1:1 또는 그룹) ====================
-        // isGroup: true for group chat; chatId is userId for 1:1, groupId for group
-        async function openChat(chatId, metaData, isGroup) {
-            if (!currentUser) return;
-            currentChatUser = { id: chatId, data: metaData || {} };
-            currentChatUser.data.group = !!isGroup;
+        // ==================== 그룹 관련 함수 ====================
+        // 그룹 생성 모달 열기
+        document.getElementById('createGroupBtn').addEventListener('click', async () => {
+            const friendSelectList = document.getElementById('friendSelectList');
+            friendSelectList.innerHTML = '';
 
-            // 채팅방 ID 생성
-            if (isGroup) {
-                currentChatId = `group_${chatId}`;
-            } else {
-                currentChatId = [currentUser.uid, chatId].sort().join('_');
+            const friendsSnap = await get(ref(database, `friends/${currentUser.uid}`));
+            if (friendsSnap.exists()) {
+                const friendIds = Object.keys(friendsSnap.val());
+                for (const friendId of friendIds) {
+                    const userSnap = await get(ref(database, `users/${friendId}`));
+                    if (userSnap. exists()) {
+                        const friendData = userSnap.val();
+                        const checkbox = document.createElement('div');
+                        checkbox.style.cssText = 'padding: 8px; display: flex; align-items: center; gap: 8px; cursor: pointer;';
+                        checkbox.innerHTML = `
+                            <input type="checkbox" value="${friendId}" class="friend-checkbox" style="cursor: pointer;">
+                            <span>${friendData.name} (@${friendData.username})</span>
+                        `;
+                        checkbox.querySelector('input').addEventListener('change', (e) => {
+                            if (e.target.checked) {
+                                addMemberToSelection(friendId, friendData);
+                            } else {
+                                removeMemberFromSelection(friendId);
+                            }
+                        });
+                        friendSelectList.appendChild(checkbox);
+                    }
+                }
             }
 
-            // 기존 messages 리스너 제거 (중복 리스너 방지)
+            document.getElementById('createGroupModal').classList.add('active');
+            document.getElementById('selectedMembersList').innerHTML = '';
+        });
+
+        let selectedMembers = {};
+
+        function addMemberToSelection(userId, userData) {
+            selectedMembers[userId] = userData;
+            updateSelectedMembersList();
+        }
+
+        function removeMemberFromSelection(userId) {
+            delete selectedMembers[userId];
+            updateSelectedMembersList();
+        }
+
+        function updateSelectedMembersList() {
+            const list = document.getElementById('selectedMembersList');
+            list.innerHTML = '';
+            for (const [userId, userData] of Object.entries(selectedMembers)) {
+                const item = document. createElement('div');
+                item. className = 'member-item';
+                item.innerHTML = `
+                    <span>${userData.name} (@${userData.username})</span>
+                    <button class="remove-member" data-id="${userId}">제거</button>
+                `;
+                item.querySelector('.remove-member').addEventListener('click', () => {
+                    removeMemberFromSelection(userId);
+                    document.querySelector(`input[value="${userId}"]`).checked = false;
+                });
+                list.appendChild(item);
+            }
+        }
+
+        // 그룹 생성
+        document.getElementById('createGroupBtn2').addEventListener('click', async () => {
+            const groupName = document.getElementById('groupName').value.trim();
+            const groupDesc = document.getElementById('groupDescription').value.trim();
+            const errorDiv = document.getElementById('groupError');
+            const successDiv = document.getElementById('groupSuccess');
+            const createBtn = document.getElementById('createGroupBtn2');
+
+            errorDiv.classList.remove('show');
+            successDiv.classList.remove('show');
+
+            if (!groupName) {
+                errorDiv. textContent = '그룹 이름을 입력하세요.';
+                errorDiv.classList.add('show');
+                return;
+            }
+
+            if (Object.keys(selectedMembers).length === 0) {
+                errorDiv.textContent = '최소 1명 이상의 멤버를 선택하세요.';
+                errorDiv.classList.add('show');
+                return;
+            }
+
+            createBtn.disabled = true;
+            createBtn.innerHTML = '<span class="spinner"></span> 생성 중...';
+
+            try {
+                const groupId = push(ref(database, 'groups')).key;
+                const memberIds = Object.keys(selectedMembers);
+                memberIds.unshift(currentUser.uid); // 현재 사용자를 멤버로 추가
+
+                const memberObj = {};
+                memberIds.forEach(id => {
+                    memberObj[id] = { joinedAt: Date.now() };
+                });
+
+                await set(ref(database, `groups/${groupId}`), {
+                    name: groupName,
+                    description: groupDesc,
+                    createdBy: currentUser.uid,
+                    createdAt: Date.now(),
+                    members: memberObj
+                });
+
+                // 각 멤버의 그룹 채팅 목록에 추가
+                for (const memberId of memberIds) {
+                    await set(ref(database, `chats/${memberId}/${groupId}`), {
+                        type: 'group',
+                        lastMessage: '',
+                        lastMessageTime: Date.now(),
+                        unread: false
+                    });
+                }
+
+                successDiv.textContent = '그룹이 생성되었습니다!';
+                successDiv.classList.add('show');
+
+                setTimeout(() => {
+                    document.getElementById('createGroupModal').classList.remove('active');
+                    document.getElementById('groupName').value = '';
+                    document.getElementById('groupDescription').value = '';
+                    selectedMembers = {};
+                    loadChats();
+                }, 1500);
+
+            } catch (error) {
+                console.error('그룹 생성 에러:', error);
+                errorDiv.textContent = '그룹 생성 중 오류가 발생했습니다: ' + error.message;
+                errorDiv.classList. add('show');
+            } finally {
+                createBtn.disabled = false;
+                createBtn.innerHTML = '그룹 생성';
+            }
+        });
+
+        document.getElementById('closeGroupModal').addEventListener('click', () => {
+            document.getElementById('createGroupModal').classList.remove('active');
+            selectedMembers = {};
+        });
+
+        // ==================== 그룹 목록 로드 ====================
+        function loadGroups() {
+            if (!currentUser) return;
+
+            if (groupsRef) {
+                try { off(groupsRef); } catch (e) { }
+            }
+
+            groupsRef = ref(database, `groups`);
+            onValue(groupsRef, async (snapshot) => {
+                // 현재 사용자의 모든 그룹 정보 업데이트
+                if (snapshot.exists()) {
+                    const groups = snapshot.val();
+                    for (const [groupId, groupData] of Object.entries(groups)) {
+                        if (groupData.members && groupData.members[currentUser.uid]) {
+                            // 사용자가 멤버인 그룹
+                            // 나중에 필요하면 업데이트
+                        }
+                    }
+                }
+            });
+        }
+
+        // ==================== 채팅 열기 (개인/그룹) ====================
+        function openChat(friendId, friendData) {
+            currentChatUser = { id: friendId, data: friendData };
+            currentChatId = [currentUser.uid, friendId]. sort().join('_');
+            currentChatType = 'direct';
+            currentGroupId = null;
+
             if (messagesRef) {
-                try { off(messagesRef); } catch (e) { /* ignore */ }
+                try { off(messagesRef); } catch (e) { }
                 messagesRef = null;
             }
-            
-            // nav highlight to messages
+
             document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
             document.querySelector('[data-view="messages"]').classList.add('active');
-            
+
             document.getElementById('friendsPanel').classList.remove('active');
-            document.getElementById('groupsPanel').classList.remove('active');
             document.getElementById('messagesPanel').classList.add('active');
             document.getElementById('chatArea').classList.add('active');
 
-            // Fetch up-to-date meta for groups
-            if (isGroup) {
-                const groupSnap = await get(ref(database, `groups/${chatId}`));
-                if (groupSnap.exists()) {
-                    currentChatUser.data = Object.assign(currentChatUser.data || {}, groupSnap.val());
-                }
-            } else {
-                // ensure we have friend data
-                const userSnap = await get(ref(database, `users/${chatId}`));
-                if (userSnap.exists()) {
-                    currentChatUser.data = Object.assign(currentChatUser.data || {}, userSnap.val());
-                }
-            }
-
-            // 채팅 헤더 설정
-            let headerHTML = '';
-            if (isGroup) {
-                const groupName = currentChatUser.data.name || currentChatUser.data.groupName || '그룹';
-                const membersCount = currentChatUser.data.members ? Object.keys(currentChatUser.data.members).length : 0;
-                const initial = groupName.charAt(0).toUpperCase();
-                headerHTML = `
-                    <div class="chat-header">
-                        <div class="chat-header-left">
-                            <div class="chat-header-avatar">${initial}</div>
-                            <div class="chat-header-details">
-                                <h3>${groupName}</h3>
-                                <div class="chat-header-status" style="color: var(--text-secondary)">
-                                    ${membersCount}명 참가
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat-actions">
-                            <button class="action-btn" title="그룹 멤버">👥</button>
-                            <button class="action-btn" title="검색">🔍</button>
-                            <button class="action-btn" title="더보기">⋮</button>
-                        </div>
-                    </div>
-                `;
-            } else {
-                const friendData = currentChatUser.data || {};
-                const initial = friendData.username ? friendData.username.charAt(0).toUpperCase() : '?';
-                const onlineStatus = friendData.online ? '온라인' : '오프라인';
-                const statusColor = friendData.online ? 'var(--success)' : 'var(--text-secondary)';
-                headerHTML = `
-                    <div class="chat-header">
-                        <div class="chat-header-left">
-                            <div class="chat-header-avatar">${initial}</div>
-                            <div class="chat-header-details">
-                                <h3>${friendData.name || '이름 없음'}</h3>
-                                <div class="chat-header-status" style="color: ${statusColor}">
-                                    ${friendData.online ? '<span class="status-dot"></span>' : ''}
-                                    ${onlineStatus}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat-actions">
-                            <button class="action-btn" title="검색">🔍</button>
-                            <button class="action-btn" title="통화">📞</button>
-                            <button class="action-btn" title="더보기">⋮</button>
-                        </div>
-                    </div>
-                `;
-            }
+            const initial = friendData.username ? friendData.username.charAt(0).toUpperCase() : '?';
+            const onlineStatus = friendData.online ? '온라인' : '오프라인';
+            const statusColor = friendData.online ? 'var(--success)' : 'var(--text-secondary)';
 
             document.getElementById('chatArea').innerHTML = `
-                ${headerHTML}
+                <div class="chat-header">
+                    <div class="chat-header-left">
+                        <div class="chat-header-avatar">${initial}</div>
+                        <div class="chat-header-details">
+                            <h3>${friendData.name || '이름 없음'}</h3>
+                            <div class="chat-header-status" style="color: ${statusColor}">
+                                ${friendData.online ? '<span class="status-dot"></span>' : ''}
+                                ${onlineStatus}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="action-btn" title="검색">🔍</button>
+                        <button class="action-btn" title="통화">📞</button>
+                        <button class="action-btn" title="더보기">⋮</button>
+                    </div>
+                </div>
                 <div class="messages-container" id="messagesContainer"></div>
                 <div class="input-area">
                     <div class="input-wrapper">
                         <div class="input-actions">
-                            <button class="attachment-btn" title="파일 첨부">📎</button>
-                            <button class="attachment-btn" title="이모티콘">😊</button>
+                            <button class="attachment-btn" id="attachBtn" title="파일 첨부">📎</button>
+                            <button class="attachment-btn" id="emojiBtn" title="이모티콘">😊</button>
                         </div>
                         <textarea 
                             class="message-input" 
@@ -2040,119 +2186,408 @@
             setupMessageInput();
             loadMessages();
             loadChatList();
+
+            update(ref(database, `chats/${currentUser.uid}/${currentChatUser.id}`), { unread: false }).catch(() => {});
+        }
+
+        // 그룹 채팅 열기
+        function openGroupChat(groupId, groupData) {
+            currentChatType = 'group';
+            currentGroupId = groupId;
+            currentChatUser = null;
+            currentChatId = groupId;
+
+            if (messagesRef) {
+                try { off(messagesRef); } catch (e) { }
+                messagesRef = null;
+            }
+
+            document.querySelectorAll('.nav-item').forEach(nav => nav. classList.remove('active'));
+            document.querySelector('[data-view="messages"]').classList.add('active');
+
+            document.getElementById('friendsPanel').classList.remove('active');
+            document.getElementById('messagesPanel').classList.add('active');
+            document.getElementById('chatArea').classList.add('active');
+
+            const memberCount = Object.keys(groupData. members || {}).length;
+
+            document.getElementById('chatArea').innerHTML = `
+                <div class="chat-header">
+                    <div class="chat-header-left">
+                        <div class="chat-header-avatar group">👥</div>
+                        <div class="chat-header-details">
+                            <h3>${groupData.name}</h3>
+                            <div class="chat-header-status">
+                                <span style="color: var(--text-secondary);">멤버 ${memberCount}명</span>
+                                <button class="action-btn" id="groupInfoBtn" style="margin-left: 8px; width: auto; padding: 4px 12px; font-size: 12px; background: var(--primary); color: white;">정보</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="action-btn" title="검색">🔍</button>
+                        <button class="action-btn" title="더보기">⋮</button>
+                    </div>
+                </div>
+                <div class="messages-container" id="messagesContainer"></div>
+                <div class="input-area">
+                    <div class="input-wrapper">
+                        <div class="input-actions">
+                            <button class="attachment-btn" id="attachBtn" title="파일 첨부">📎</button>
+                            <button class="attachment-btn" id="emojiBtn" title="이모티콘">😊</button>
+                        </div>
+                        <textarea 
+                            class="message-input" 
+                            placeholder="메시지를 입력하세요..." 
+                            rows="1"
+                            id="messageInput"
+                        ></textarea>
+                        <button class="send-btn" id="sendBtn" title="전송">➤</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('groupInfoBtn').addEventListener('click', () => {
+                openGroupInfo(groupId, groupData);
+            });
+
+            setupMessageInput();
+            loadMessages();
+            loadChatList();
+
+            update(ref(database, `chats/${currentUser.uid}/${groupId}`), { unread: false }).catch(() => {});
+        }
+
+        // 그룹 정보 모달
+        async function openGroupInfo(groupId, groupData) {
+            document.getElementById('groupInfoName').textContent = groupData.name;
+            document.getElementById('groupInfoDesc').textContent = groupData.description || '설명 없음';
+
+            const membersList = document.getElementById('groupMembersList');
+            membersList. innerHTML = '';
+
+            const isGroupAdmin = groupData.createdBy === currentUser.uid;
+
+            for (const [memberId, memberData] of Object.entries(groupData.members || {})) {
+                const userSnap = await get(ref(database, `users/${memberId}`));
+                const userData = userSnap.val();
+                const item = document.createElement('div');
+                item.className = 'member-item';
+                item.innerHTML = `
+                    <span>${userData.name} (@${userData.username})${memberId === groupData.createdBy ? ' <strong>[관리자]</strong>' :  ''}</span>
+                    ${isGroupAdmin && memberId !== currentUser.uid ? `<button class="remove-member" data-id="${memberId}">제거</button>` : ''}
+                `;
+
+                if (isGroupAdmin && memberId !== currentUser.uid) {
+                    item.querySelector('.remove-member').addEventListener('click', async () => {
+                        if (confirm('멤버를 제거하시겠습니까?')) {
+                            await removeMemberFromGroup(groupId, memberId);
+                        }
+                    });
+                }
+
+                membersList.appendChild(item);
+            }
+
+            // 그룹에 속하지 않은 친구 추가 옵션
+            const addFriendList = document.getElementById('groupAddFriendList');
+            addFriendList.innerHTML = '';
+
+            const friendsSnap = await get(ref(database, `friends/${currentUser.uid}`));
+            if (friendsSnap.exists()) {
+                const friendIds = Object.keys(friendsSnap. val());
+                for (const friendId of friendIds) {
+                    if (! groupData.members[friendId]) {
+                        const userSnap = await get(ref(database, `users/${friendId}`));
+                        if (userSnap.exists()) {
+                            const friendData = userSnap.val();
+                            const btn = document.createElement('button');
+                            btn.className = 'btn btn-primary';
+                            btn.style.cssText = 'width: 100%; margin-bottom: 8px; text-align: left;';
+                            btn.innerHTML = `➕ ${friendData.name} (@${friendData.username})`;
+                            btn.addEventListener('click', async () => {
+                                await addMemberToGroup(groupId, friendId);
+                            });
+                            addFriendList.appendChild(btn);
+                        }
+                    }
+                }
+            }
+
+            document.getElementById('groupInfoModal').classList.add('active');
+        }
+
+        async function addMemberToGroup(groupId, memberId) {
+            try {
+                await set(ref(database, `groups/${groupId}/members/${memberId}`), { joinedAt: Date.now() });
+                await set(ref(database, `chats/${memberId}/${groupId}`), {
+                    type: 'group',
+                    lastMessage: '',
+                    lastMessageTime: Date.now(),
+                    unread: false
+                });
+
+                alert('멤버가 추가되었습니다.');
+                const groupSnap = await get(ref(database, `groups/${groupId}`));
+                openGroupInfo(groupId, groupSnap. val());
+            } catch (error) {
+                console.error('멤버 추가 에러:', error);
+                alert('멤버 추가 중 오류가 발생했습니다.');
+            }
+        }
+
+        async function removeMemberFromGroup(groupId, memberId) {
+            try {
+                await set(ref(database, `groups/${groupId}/members/${memberId}`), null);
+                await set(ref(database, `chats/${memberId}/${groupId}`), null);
+
+                alert('멤버가 제거되었습니다.');
+                const groupSnap = await get(ref(database, `groups/${groupId}`));
+                openGroupInfo(groupId, groupSnap.val());
+            } catch (error) {
+                console.error('멤버 제거 에러:', error);
+                alert('멤버 제거 중 오류가 발생했습니다.');
+            }
         }
 
         // ==================== 메시지 입력 설정 ====================
         function setupMessageInput() {
             const messageInput = document.getElementById('messageInput');
-            const sendBtn = document.getElementById('sendBtn');
-            
-            if (!messageInput || !sendBtn) return;
-            
+            const sendBtn = document. getElementById('sendBtn');
+            const emojiBtn = document.getElementById('emojiBtn');
+            const attachBtn = document.getElementById('attachBtn');
+            const fileInput = document.getElementById('fileInput');
+            const emojiPanel = document.getElementById('emojiPanel');
+
+            if (! messageInput || !sendBtn) return;
+
             messageInput.addEventListener('input', function() {
                 this.style.height = 'auto';
                 this.style.height = Math.min(this.scrollHeight, 120) + 'px';
             });
-            
+
             sendBtn.addEventListener('click', sendMessage);
-            
+
             messageInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
                     sendMessage();
                 }
             });
+
+            if (emojiPanel && emojiPanel.children.length === 0) {
+                const EMOJIS = ['😀', '😁', '😂', '🤣', '😊', '😍', '😘', '🤗', '🤔', '😎'];
+                const toShow = EMOJIS.slice(0, 5);
+                toShow.forEach(e => {
+                    const btn = document.createElement('div');
+                    btn.className = 'emoji-item';
+                    btn.textContent = e;
+                    btn. addEventListener('click', () => {
+                        insertEmoji(e);
+                        emojiPanel.style.display = 'none';
+                        messageInput.focus();
+                    });
+                    emojiPanel.appendChild(btn);
+                });
+            }
+
+            if (emojiBtn) {
+                emojiBtn.addEventListener('click', (ev) => {
+                    const panel = document.getElementById('emojiPanel');
+                    if (! panel) return;
+                    panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+                });
+            }
+
+            document.addEventListener('click', (ev) => {
+                const panel = document.getElementById('emojiPanel');
+                if (!panel) return;
+                if (ev.target.closest('#emojiPanel') || ev.target.id === 'emojiBtn') return;
+                panel.style.display = 'none';
+            });
+
+            if (attachBtn && fileInput) {
+                attachBtn.addEventListener('click', () => {
+                    fileInput.value = '';
+                    fileInput.click();
+                });
+
+                fileInput.addEventListener('change', async (ev) => {
+                    const file = ev.target.files && ev.target.files[0];
+                    if (! file) return;
+                    if (! currentChatId) {
+                        alert('대화를 먼저 열어주세요.');
+                        return;
+                    }
+
+                    attachBtn.disabled = true;
+                    attachBtn.innerHTML = '<span class="spinner"></span>';
+
+                    try {
+                        const safeName = encodeURIComponent(file.name. replace(/\s+/g, '_'));
+                        const path = `uploads/${currentUser.uid}/${Date.now()}_${safeName}`;
+                        const sRef = storageRef(storage, path);
+                        await uploadBytes(sRef, file);
+                        const url = await getDownloadURL(sRef);
+
+                        const messagesRefLocal = ref(database, `messages/${currentChatId}`);
+                        await push(messagesRefLocal, {
+                            type: 'image',
+                            imageUrl: url,
+                            filename: file.name,
+                            senderId: currentUser.uid,
+                            senderUsername: currentUser.username,
+                            timestamp: Date.now()
+                        });
+
+                        if (currentChatType === 'direct') {
+                            await update(ref(database, `chats/${currentUser.uid}/${currentChatUser.id}`), {
+                                lastMessage: '[이미지]',
+                                lastMessageTime:  Date.now(),
+                                unread: false
+                            });
+
+                            await update(ref(database, `chats/${currentChatUser.id}/${currentUser.uid}`), {
+                                lastMessage: '[이미지]',
+                                lastMessageTime: Date.now(),
+                                unread: true
+                            });
+                        } else {
+                            const groupSnap = await get(ref(database, `groups/${currentGroupId}`));
+                            for (const memberId of Object.keys(groupSnap.val().members || {})) {
+                                if (memberId !== currentUser.uid) {
+                                    await update(ref(database, `chats/${memberId}/${currentGroupId}`), {
+                                        lastMessage:  '[이미지]',
+                                        lastMessageTime: Date. now(),
+                                        unread: true
+                                    });
+                                }
+                            }
+
+                            await update(ref(database, `chats/${currentUser.uid}/${currentGroupId}`), {
+                                lastMessage: '[이미지]',
+                                lastMessageTime: Date.now(),
+                                unread: false
+                            });
+                        }
+                    } catch (err) {
+                        console.error('파일 업로드 오류', err);
+                        alert('파일 업로드 중 오류가 발생했습니다.');
+                    } finally {
+                        attachBtn.disabled = false;
+                        attachBtn.innerHTML = '📎';
+                    }
+                });
+            }
         }
 
-        // ==================== 메시지 전송 (1:1 및 그룹 처리) ====================
+        function insertEmoji(emoji) {
+            const ta = document.getElementById('messageInput');
+            if (!ta) return;
+            const start = ta.selectionStart || ta.value.length;
+            const end = ta.selectionEnd || start;
+            ta.value = ta.value.slice(0, start) + emoji + ta.value.slice(end);
+            ta.focus();
+            ta.selectionStart = ta.selectionEnd = start + emoji.length;
+            ta.dispatchEvent(new Event('input'));
+        }
+
+        // ==================== 메시지 전송 ====================
         async function sendMessage() {
             const messageInput = document.getElementById('messageInput');
-            if (!messageInput || !currentChatId || !currentUser) return;
-            
+            if (!messageInput || ! currentChatId) return;
+
             const text = messageInput.value.trim();
             if (text === '') return;
-            
+
             try {
                 const messagesRefLocal = ref(database, `messages/${currentChatId}`);
-                const pushed = await push(messagesRefLocal, {
+                const senderName = currentChatType === 'direct' ?  currentUser.username : currentUser.name;
+                
+                await push(messagesRefLocal, {
+                    type: 'text',
                     text: text,
                     senderId: currentUser.uid,
-                    senderUsername: currentUser.username,
+                    senderUsername: senderName,
                     timestamp: Date.now()
                 });
 
-                if (currentChatUser && currentChatUser.data && currentChatUser.data.group) {
-                    // group: update chats for all members
-                    const members = currentChatUser.data.members ? Object.keys(currentChatUser.data.members) : [];
-                    for (const memberId of members) {
-                        await update(ref(database, `chats/${memberId}/${currentChatUser.id}`), {
-                            lastMessage: text,
-                            lastMessageTime: Date.now(),
-                            unread: memberId === currentUser.uid ? false : true
-                        });
-                    }
-                } else {
-                    // 1:1 chat: update both sides
+                if (currentChatType === 'direct') {
                     await update(ref(database, `chats/${currentUser.uid}/${currentChatUser.id}`), {
                         lastMessage: text,
                         lastMessageTime: Date.now(),
                         unread: false
                     });
-                    
+
                     await update(ref(database, `chats/${currentChatUser.id}/${currentUser.uid}`), {
                         lastMessage: text,
                         lastMessageTime: Date.now(),
                         unread: true
                     });
+                } else {
+                    const groupSnap = await get(ref(database, `groups/${currentGroupId}`));
+                    for (const memberId of Object. keys(groupSnap.val().members || {})) {
+                        if (memberId !== currentUser. uid) {
+                            await update(ref(database, `chats/${memberId}/${currentGroupId}`), {
+                                lastMessage: text,
+                                lastMessageTime: Date.now(),
+                                unread: true
+                            });
+                        }
+                    }
+
+                    await update(ref(database, `chats/${currentUser.uid}/${currentGroupId}`), {
+                        lastMessage: text,
+                        lastMessageTime: Date.now(),
+                        unread: false
+                    });
                 }
-                
+
                 messageInput.value = '';
                 messageInput.style.height = 'auto';
             } catch (error) {
                 console.error('메시지 전송 에러:', error);
-                alert('메시지 전송에 실패했습니다: ' + error.message);
+                alert('메시지 전송에 실패했습니다:  ' + error.message);
             }
         }
 
         // ==================== 메시지 로드 ====================
-        function loadMessages() {
-            if (!currentChatId) return;
+        async function loadMessages() {
+            if (! currentChatId) return;
 
-            // 기존 messages 리스너 해제
             if (messagesRef) {
-                try { off(messagesRef); } catch (e) { /* ignore */ }
+                try { off(messagesRef); } catch (e) { }
             }
 
             messagesRef = ref(database, `messages/${currentChatId}`);
             onValue(messagesRef, async (snapshot) => {
                 const messagesContainer = document.getElementById('messagesContainer');
                 if (!messagesContainer) return;
-                
+
                 messagesContainer.innerHTML = '';
-                
-                if (!snapshot.exists()) {
+
+                if (! snapshot.exists()) {
                     messagesContainer.innerHTML = `
                         <div class="date-divider"><span>대화 시작</span></div>
                     `;
                     return;
                 }
-                
+
                 let lastDate = null;
                 const messages = [];
-                
+
                 snapshot.forEach((childSnapshot) => {
                     messages.push({
-                        id: childSnapshot.key,
-                        ...childSnapshot.val()
+                        id: childSnapshot. key,
+                        ... childSnapshot.val()
                     });
                 });
-                
+
                 messages.sort((a, b) => a.timestamp - b.timestamp);
-                
+
                 for (const message of messages) {
                     const messageDate = new Date(message.timestamp);
                     const dateStr = messageDate.toLocaleDateString('ko-KR');
-                    
+
                     if (dateStr !== lastDate) {
                         const divider = document.createElement('div');
                         divider.className = 'date-divider';
@@ -2160,140 +2595,191 @@
                         messagesContainer.appendChild(divider);
                         lastDate = dateStr;
                     }
-                    
+
                     const isSent = message.senderId === currentUser.uid;
-                    const timeStr = messageDate.toLocaleTimeString('ko-KR', { 
-                        hour: '2-digit', 
-                        minute: '2-digit' 
+                    const timeStr = messageDate.toLocaleTimeString('ko-KR', {
+                        hour: '2-digit',
+                        minute: '2-digit'
                     });
-                    
-                    let initial = '?';
-                    if (message.senderUsername) {
-                        initial = message.senderUsername.charAt(0).toUpperCase();
-                    } else if (isSent && currentUser.username) {
-                        initial = currentUser.username.charAt(0).toUpperCase();
-                    } else if (currentChatUser && currentChatUser.data && currentChatUser.data.group) {
-                        initial = (currentChatUser.data.name || 'G').charAt(0).toUpperCase();
-                    } else if (currentChatUser && currentChatUser.data) {
-                        initial = (currentChatUser.data.username || '?').charAt(0).toUpperCase();
+
+                    let initial;
+                    if (isSent) {
+                        initial = currentUser.username ?  currentUser.username.charAt(0).toUpperCase() : 'U';
+                    } else if (currentChatType === 'group') {
+                        initial = message.senderUsername ? message.senderUsername.charAt(0).toUpperCase() : '? ';
+                    } else {
+                        initial = currentChatUser && currentChatUser.data. username ? currentChatUser.data.username.charAt(0).toUpperCase() : '?';
                     }
 
                     const messageDiv = document.createElement('div');
                     messageDiv.className = `message ${isSent ? 'sent' : 'received'}`;
+
+                    let bubbleContent = '';
+                    if (message.type === 'image' && message.imageUrl) {
+                        bubbleContent = `<img src="${escapeHtml(message.imageUrl)}" class="message-image" alt="${escapeHtml(message.filename || 'image')}" />`;
+                    } else {
+                        bubbleContent = escapeHtml(message.text || '');
+                    }
+
+                    let readHtml = '';
+                    if (isSent && currentChatType === 'direct') {
+                        const readBy = message.readBy || {};
+                        const readByFriend = readBy[currentChatUser.id];
+                        readHtml = `<div class="read-indicator">${readByFriend ? '읽음' : ''}</div>`;
+                    }
+
+                    let senderDisplay = '';
+                    if (currentChatType === 'group' && ! isSent) {
+                        senderDisplay = `<div class="message-sender">${message.senderUsername}</div>`;
+                    }
+
                     messageDiv.innerHTML = `
                         <div class="message-avatar">${initial}</div>
                         <div class="message-content">
-                            <div class="message-bubble">${escapeHtml(message.text)}</div>
+                            ${senderDisplay}
+                            <div class="message-bubble">${bubbleContent}</div>
                             <div class="message-time">${timeStr}</div>
+                            ${readHtml}
                         </div>
                     `;
-                    
+
                     messagesContainer.appendChild(messageDiv);
                 }
-                
+
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                for (const message of messages) {
+                    if (message.senderId !== currentUser.uid) {
+                        const alreadyRead = message.readBy && message.readBy[currentUser.uid];
+                        if (!alreadyRead) {
+                            try {
+                                await set(ref(database, `messages/${currentChatId}/${message.id}/readBy/${currentUser.uid}`), true);
+                            } catch (e) {
+                                console.warn('읽음 표시 실패', e);
+                            }
+                        }
+                    }
+                }
+
+                if (currentChatType === 'direct') {
+                    try {
+                        await update(ref(database, `chats/${currentUser.uid}/${currentChatUser.id}`), { unread: false });
+                    } catch (e) { }
+                } else {
+                    try {
+                        await update(ref(database, `chats/${currentUser.uid}/${currentGroupId}`), { unread: false });
+                    } catch (e) { }
+                }
             });
         }
 
-        // ==================== 채팅 목록 로드 (1:1 + 그룹 모두 처리) ====================
+        // ==================== 채팅 목록 로드 ====================
         function loadChatList() {
             if (!currentUser) return;
 
-            // 기존 chats 리스너 해제
             if (chatsRef) {
-                try { off(chatsRef); } catch (e) { /* ignore */ }
+                try { off(chatsRef); } catch (e) { }
             }
 
             chatsRef = ref(database, `chats/${currentUser.uid}`);
             onValue(chatsRef, async (snapshot) => {
                 const chatList = document.getElementById('chatList');
                 if (!chatList) return;
-                
+
                 chatList.innerHTML = '';
-                
-                if (!snapshot.exists()) {
+
+                if (!snapshot. exists()) {
                     chatList.innerHTML = `
                         <div class="empty-state">
                             <div class="empty-state-icon">💬</div>
                             <h3>메시지가 없습니다</h3>
-                            <p>친구에게 메시지를 보내보세요!</p>
+                            <p>친구에게 메시지를 보내보세요! </p>
                         </div>
                     `;
                     return;
                 }
-                
+
                 const chats = [];
-                for (const [chatId, chatData] of Object.entries(snapshot.val())) {
-                    if (chatData.group) {
-                        // group chat: fetch group meta
+                for (const [chatId, chatData] of Object.entries(snapshot. val())) {
+                    if (chatData.type === 'group') {
                         const groupSnap = await get(ref(database, `groups/${chatId}`));
-                        const groupData = groupSnap.exists() ? groupSnap.val() : { name: chatData.groupName || '그룹' };
-                        chats.push({
-                            friendId: chatId,
-                            friendData: { groupName: groupData.name || chatData.groupName || '그룹', members: groupData.members || chatData.members || {} },
-                            chatData,
-                            isGroup: true
-                        });
+                        if (groupSnap.exists()) {
+                            chats.push({
+                                chatId,
+                                type: 'group',
+                                data: groupSnap.val(),
+                                chatData
+                            });
+                        }
                     } else {
-                        // 1:1 chat: fetch user
                         const userSnapshot = await get(ref(database, `users/${chatId}`));
                         if (userSnapshot.exists()) {
                             chats.push({
-                                friendId: chatId,
-                                friendData: userSnapshot.val(),
-                                chatData,
-                                isGroup: false
+                                chatId,
+                                type: 'direct',
+                                data:  userSnapshot.val(),
+                                chatData
                             });
                         }
                     }
                 }
-                
+
                 chats.sort((a, b) => (b.chatData.lastMessageTime || 0) - (a.chatData.lastMessageTime || 0));
-                
+
                 let unreadCount = 0;
-                
+
                 for (const chat of chats) {
-                    const initial = chat.isGroup ? (chat.friendData.groupName || 'G').charAt(0).toUpperCase() : (chat.friendData.username ? chat.friendData.username.charAt(0).toUpperCase() : '?');
-                    const time = chat.chatData.lastMessageTime ? new Date(chat.chatData.lastMessageTime).toLocaleTimeString('ko-KR', {
+                    let avatar, name;
+                    if (chat.type === 'group') {
+                        avatar = '👥';
+                        name = chat.data.name;
+                    } else {
+                        avatar = chat.data.username. charAt(0).toUpperCase();
+                        name = chat.data.name || '이름 없음';
+                    }
+
+                    const time = chat.chatData.lastMessageTime ?  new Date(chat.chatData. lastMessageTime).toLocaleTimeString('ko-KR', {
                         hour: '2-digit',
                         minute: '2-digit'
                     }) : '';
-                    
+
                     if (chat.chatData.unread) unreadCount++;
-                    
+
                     const chatItem = document.createElement('div');
                     chatItem.className = 'chat-item';
                     chatItem.innerHTML = `
-                        <div class="chat-avatar">${initial}</div>
+                        <div class="chat-avatar ${chat.type === 'group' ? 'group' : ''}">${avatar}</div>
                         <div class="chat-info">
                             <div class="chat-header-info">
-                                <div class="chat-name">${chat.isGroup ? (chat.friendData.groupName || '그룹') : (chat.friendData.name || '이름 없음')}</div>
+                                <div class="chat-name">${name}</div>
                                 <div class="chat-time">${time}</div>
                             </div>
                             <div class="chat-preview">${chat.chatData.lastMessage || ''}</div>
                         </div>
-                        ${chat.chatData.unread ? '<span class="unread-badge">N</span>' : ''}
+                        ${chat.chatData.unread ?  '<span class="unread-badge">N</span>' : ''}
                     `;
-                    
+
                     chatItem.addEventListener('click', () => {
-                        openChat(chat.friendId, chat.friendData, !!chat.isGroup);
-                        
-                        // 읽음 처리
+                        if (chat.type === 'group') {
+                            openGroupChat(chat.chatId, chat.data);
+                        } else {
+                            openChat(chat.chatId, chat.data);
+                        }
+
                         if (chat.chatData.unread) {
-                            update(ref(database, `chats/${currentUser.uid}/${chat.friendId}`), {
+                            update(ref(database, `chats/${currentUser.uid}/${chat.chatId}`), {
                                 unread: false
                             });
                         }
                     });
-                    
+
                     chatList.appendChild(chatItem);
                 }
-                
-                // 읽지 않은 메시지 배지 업데이트
+
                 const badge = document.getElementById('unreadBadge');
                 if (unreadCount > 0) {
-                    badge.textContent = unreadCount;
-                    badge.style.display = 'flex';
+                    badge. textContent = unreadCount;
+                    badge. style.display = 'flex';
                 } else {
                     badge.style.display = 'none';
                 }
@@ -2304,73 +2790,12 @@
             loadChatList();
         }
 
-        // ==================== 그룹 목록 로드 (사용자가 속한 그룹만) ====================
-        async function loadGroups() {
-            if (!currentUser) return;
-            const groupListEl = document.getElementById('groupList');
-            groupListEl.innerHTML = '';
-
-            // 간단한 방법: chats/{userId}에서 group flag가 있는 항목을 가져옴
-            const userChatsSnap = await get(ref(database, `chats/${currentUser.uid}`));
-            if (!userChatsSnap.exists()) {
-                groupListEl.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-state-icon">👥+</div>
-                        <h3>참여한 그룹이 없습니다</h3>
-                        <p>그룹을 생성하거나 초대받아보세요</p>
-                    </div>
-                `;
-                return;
-            }
-
-            const entries = Object.entries(userChatsSnap.val()).filter(([id, data]) => data && data.group);
-            if (entries.length === 0) {
-                groupListEl.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-state-icon">👥+</div>
-                        <h3>참여한 그룹이 없습니다</h3>
-                        <p>그룹을 생성하거나 초대받아보세요</p>
-                    </div>
-                `;
-                return;
-            }
-
-            for (const [groupId, chatData] of entries) {
-                // Fetch group meta
-                const groupSnap = await get(ref(database, `groups/${groupId}`));
-                const group = groupSnap.exists() ? groupSnap.val() : { name: chatData.groupName || '그룹', members: chatData.members || {} };
-                const initial = (group.name || 'G').charAt(0).toUpperCase();
-
-                const item = document.createElement('div');
-                item.className = 'group-list-item';
-                item.innerHTML = `
-                    <div class="group-avatar">${initial}</div>
-                    <div class="friend-info">
-                        <div class="friend-name">${group.name || '그룹'}</div>
-                        <div class="friend-username">${Object.keys(group.members || {}).length}명 참여</div>
-                    </div>
-                `;
-
-                item.addEventListener('click', () => {
-                    openChat(groupId, group, true);
-                    // mark read if there was unread
-                    if (chatData.unread) {
-                        update(ref(database, `chats/${currentUser.uid}/${groupId}`), {
-                            unread: false
-                        });
-                    }
-                });
-
-                groupListEl.appendChild(item);
-            }
-        }
-
-        // HTML 이스케이프
+        // ==================== 유틸리티 함수 ====================
         function escapeHtml(text) {
-            if (!text) return '';
+            if (! text) return '';
             const map = {
                 '&': '&amp;',
-                '<': '&lt;',
+                '<':  '&lt;',
                 '>': '&gt;',
                 '"': '&quot;',
                 "'": '&#039;'
@@ -2394,23 +2819,15 @@
             item.addEventListener('click', () => {
                 document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
                 item.classList.add('active');
-                
+
                 const view = item.dataset.view;
-                
+
                 if (view === 'friends') {
                     document.getElementById('friendsPanel').classList.add('active');
-                    document.getElementById('groupsPanel').classList.remove('active');
                     document.getElementById('messagesPanel').classList.remove('active');
                     document.getElementById('chatArea').classList.remove('active');
-                } else if (view === 'groups') {
-                    document.getElementById('friendsPanel').classList.remove('active');
-                    document.getElementById('groupsPanel').classList.add('active');
-                    document.getElementById('messagesPanel').classList.remove('active');
-                    document.getElementById('chatArea').classList.remove('active');
-                    loadGroups();
                 } else if (view === 'messages') {
                     document.getElementById('friendsPanel').classList.remove('active');
-                    document.getElementById('groupsPanel').classList.remove('active');
                     document.getElementById('messagesPanel').classList.add('active');
                     if (currentChatId) {
                         document.getElementById('chatArea').classList.add('active');
@@ -2420,15 +2837,15 @@
         });
 
         // 친구 탭 전환
-        document.querySelectorAll('#friendsTabs .tab-btn').forEach(btn => {
+        document.querySelectorAll('#friendsTabs . tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('#friendsTabs .tab-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
+
                 const tab = btn.dataset.tab;
-                
+
                 if (tab === 'friends-list') {
-                    document.getElementById('friendsList').style.display = 'block';
+                    document. getElementById('friendsList').style.display = 'block';
                     document.getElementById('friendRequests').style.display = 'none';
                     document.getElementById('addFriend').style.display = 'none';
                 } else if (tab === 'add-friend') {
@@ -2443,25 +2860,33 @@
             });
         });
 
-        // 페이지 종료 시 오프라인 처리 및 리스너 정리
-        window.addEventListener('beforeunload', () => {
-            if (currentUser) {
-                updateUserStatus(false);
-            }
-            cleanupAllListeners();
+        // 모달 닫기 버튼
+        document.getElementById('closeSettings').addEventListener('click', () => {
+            document.getElementById('settingsModal').classList.remove('active');
         });
 
-        // 전체 리스너 정리 함수
-        function cleanupAllListeners() {
-            try { if (friendsRef) off(friendsRef); } catch(e) {}
-            try { if (chatsRef) off(chatsRef); } catch(e) {}
-            try { if (messagesRef) off(messagesRef); } catch(e) {}
-            try { if (requestsRef) off(requestsRef); } catch(e) {}
-            friendsRef = null;
-            chatsRef = null;
-            messagesRef = null;
-            requestsRef = null;
-        }
+        document.getElementById('closeGroupInfoModal').addEventListener('click', () => {
+            document.getElementById('groupInfoModal').classList.remove('active');
+        });
+
+        // 모달 백드롭 클릭으로 닫기
+        document.getElementById('settingsModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('settingsModal')) {
+                document.getElementById('settingsModal').classList.remove('active');
+            }
+        });
+
+        document.getElementById('createGroupModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('createGroupModal')) {
+                document.getElementById('createGroupModal').classList.remove('active');
+            }
+        });
+
+        document.getElementById('groupInfoModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('groupInfoModal')) {
+                document.getElementById('groupInfoModal').classList.remove('active');
+            }
+        });
 
         // ==================== 설정 모달 동작 ====================
         const settingsModal = document.getElementById('settingsModal');
@@ -2471,26 +2896,20 @@
         const saveSettingsBtn = document.getElementById('saveSettingsBtn');
 
         function openSettings() {
-            if (!currentUser) return;
-            // 초기값 채우기
+            if (! currentUser) return;
             document.getElementById('settingsName').value = currentUser.name || '';
             document.getElementById('settingsStatus').value = currentUser.status || '';
             document.getElementById('currentPassword').value = '';
             document.getElementById('newPassword').value = '';
-            document.getElementById('confirmNewPassword').value = '';
+            document. getElementById('confirmNewPassword').value = '';
             document.getElementById('settingsError').classList.remove('show');
             document.getElementById('settingsSuccess').classList.remove('show');
 
             settingsModal.classList.add('active');
         }
 
-        function closeSettings() {
-            settingsModal.classList.remove('active');
-        }
-
         openSettingsBtn.addEventListener('click', openSettings);
         userProfileBtn.addEventListener('click', openSettings);
-        closeSettingsBtn.addEventListener('click', closeSettings);
 
         saveSettingsBtn.addEventListener('click', async () => {
             if (!currentUser) return;
@@ -2505,28 +2924,25 @@
             err.classList.remove('show');
             ok.classList.remove('show');
 
-            // 이름/상태 업데이트 (빈값 허용하되 null이 아니게)
             try {
                 await update(ref(database, `users/${currentUser.uid}`), {
                     name: name,
                     status: status
                 });
 
-                // 로컬 currentUser 갱신 및 UI 반영
                 currentUser.name = name;
                 currentUser.status = status;
                 localStorage.setItem('chatAppUser', JSON.stringify(currentUser));
                 loadUserData();
-                loadFriends(); // 친구 목록에 이름/상태 반영
+                loadFriends();
 
-                // 비밀번호 변경 처리(입력한 경우에만)
                 if (newPwd || confirmNew || currentPwd) {
-                    if (!currentPwd) {
+                    if (! currentPwd) {
                         err.textContent = '현재 비밀번호를 입력하세요.';
                         err.classList.add('show');
                         return;
                     }
-                    if (newPwd.length < 6) {
+                    if (newPwd. length < 6) {
                         err.textContent = '새 비밀번호는 6자 이상이어야 합니다.';
                         err.classList.add('show');
                         return;
@@ -2537,22 +2953,20 @@
                         return;
                     }
 
-                    // 현재 비밀번호 확인
                     const userSnap = await get(ref(database, `users/${currentUser.uid}`));
                     if (!userSnap.exists()) {
-                        err.textContent = '사용자 정보를 찾을 수 없습니다.';
-                        err.classList.add('show');
+                        err.textContent = '사용자 정보를 찾을 수 없습니다. ';
+                        err.classList. add('show');
                         return;
                     }
                     const userData = userSnap.val();
                     const hashedCurrent = btoa(currentPwd);
                     if (userData.password !== hashedCurrent) {
-                        err.textContent = '현재 비밀번호가 올바르지 않습니다.';
-                        err.classList.add('show');
+                        err. textContent = '현재 비밀번호가 올바르지 않습니다. ';
+                        err.classList. add('show');
                         return;
                     }
 
-                    // 비밀번호 업데이트
                     const hashedNew = btoa(newPwd);
                     await update(ref(database, `users/${currentUser.uid}`), {
                         password: hashedNew
@@ -2564,19 +2978,34 @@
                     ok.textContent = '계정 정보가 업데이트되었습니다.';
                     ok.classList.add('show');
                 }
-
-                // 닫지 않고 메시지 보여주기
             } catch (error) {
                 console.error('설정 저장 에러:', error);
-                err.textContent = '설정 저장 중 오류가 발생했습니다: ' + error.message;
+                err.textContent = '설정 저장 중 오류가 발생했습니다:  ' + error.message;
                 err.classList.add('show');
             }
         });
 
-        // 모달 외부 클릭으로 닫기 (백드롭)
-        settingsModal.addEventListener('click', (e) => {
-            if (e.target === settingsModal) closeSettings();
+        // 페이지 종료 시 오프라인 처리 및 리스너 정리
+        window.addEventListener('beforeunload', () => {
+            if (currentUser) {
+                updateUserStatus(false);
+            }
+            cleanupAllListeners();
         });
+
+        // 전체 리스너 정리 함수
+        function cleanupAllListeners() {
+            try { if (friendsRef) off(friendsRef); } catch (e) { }
+            try { if (chatsRef) off(chatsRef); } catch (e) { }
+            try { if (messagesRef) off(messagesRef); } catch (e) { }
+            try { if (requestsRef) off(requestsRef); } catch (e) { }
+            try { if (groupsRef) off(groupsRef); } catch (e) { }
+            friendsRef = null;
+            chatsRef = null;
+            messagesRef = null;
+            requestsRef = null;
+            groupsRef = null;
+        }
 
         // 페이지 로드 시 로그인 상태 확인
         checkLoginStatus();
